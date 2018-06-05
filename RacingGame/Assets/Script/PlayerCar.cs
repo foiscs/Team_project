@@ -32,6 +32,7 @@ public class PlayerCar : MonoBehaviour
         FrontLeftWheel.steerAngle = 10 * Input.GetAxis("Horizontal");
         FrontRightWheel.steerAngle = 10 * Input.GetAxis("Horizontal");
     }
+
     private void ShiftGears()
     {
         int AppropriateGear = CurrentGear;
