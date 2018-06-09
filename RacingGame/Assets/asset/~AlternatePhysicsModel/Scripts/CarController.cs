@@ -95,6 +95,10 @@ public class CarController : MonoBehaviour {
 	
 	void Update () 
 	{
+        if(Input.GetKeyDown(KeyCode.Joystick1Button7))
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
 		// Steering
 		Vector3 carDir = transform.forward;
 		float fVelo = GetComponent<Rigidbody>().velocity.magnitude;
@@ -146,18 +150,19 @@ public class CarController : MonoBehaviour {
         
 		// Handbrake
 		handbrake = Mathf.Clamp01 ( handbrake + (Input.GetKey (KeyCode.Space)? Time.deltaTime: -Time.deltaTime) );
-		
-		// Gear shifting
-		float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime)/shiftSpeed);
+        handbrake = Mathf.Clamp01(handbrake + (Input.GetKey(KeyCode.Joystick1Button8) ? Time.deltaTime : -Time.deltaTime));
+
+        // Gear shifting
+        float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime)/shiftSpeed);
 		drivetrain.throttle = throttle * shiftThrottleFactor;
 		drivetrain.throttleInput = throttleInput;
-		
-		if(Input.GetKeyDown(KeyCode.A))
+        
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button1))
 		{
 			lastShiftTime = Time.time;
 			drivetrain.ShiftUp ();
 		}
-		if(Input.GetKeyDown(KeyCode.Z))
+		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
 		{
 			lastShiftTime = Time.time;
 			drivetrain.ShiftDown ();
@@ -238,7 +243,7 @@ public class CarController : MonoBehaviour {
     void jController()
     {
         float accelPower = Input.GetAxis("Vertical");
-
+            
         if (Input.GetKey(KeyCode.LeftShift))
         {
             throttle += Time.deltaTime / throttleTime;
@@ -258,7 +263,7 @@ public class CarController : MonoBehaviour {
 
             throttleInput += Time.deltaTime / throttleTime * accelPower;
         }
-        else
+        else if(accelPower == 0)
         {
             if (drivetrain.slipRatio < 0.2f)
                 throttle -= Time.deltaTime / throttleReleaseTime;
@@ -266,15 +271,15 @@ public class CarController : MonoBehaviour {
                 throttle -= Time.deltaTime / throttleReleaseTimeTraction;
         }
         throttle = Mathf.Clamp01(throttle);
-
-        if(accelPower<0)
+        
+        if(accelPower<0f)
         {
             if (drivetrain.slipRatio < 0.2f)
-                brake += Time.deltaTime / throttleTime * accelPower;
+                brake += Time.deltaTime / throttleTime + (accelPower * 10);
             else
-                brake += Time.deltaTime / throttleTimeTraction * accelPower;
+                brake += Time.deltaTime / throttleTimeTraction + (accelPower * 10);
             throttle = 0;
-            throttleInput -= Time.deltaTime / throttleTime * accelPower;
+            throttleInput -= Time.deltaTime / throttleTime + (accelPower * 10);
         }
         else
         {
@@ -297,5 +302,7 @@ public class CarController : MonoBehaviour {
 	{
 		GUI.Label (new Rect(0,60,100,200),"km/h: "+GetComponent<Rigidbody>().velocity.magnitude * 3.6f);
 		tractionControl = GUI.Toggle(new Rect(0,80,300,20), tractionControl, "Traction Control (bypassed by shift key)");
+
+
 	}
 }

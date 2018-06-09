@@ -26,7 +26,7 @@ public class CarAI : MonoBehaviour {
             Vector3 current = path[i].position;
             Vector3 next = path[i + 1].position;
 
-            if()
+            //if()
             {
 
             }

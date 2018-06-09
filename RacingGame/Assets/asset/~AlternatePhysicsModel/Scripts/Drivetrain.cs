@@ -41,7 +41,7 @@ public class Drivetrain : MonoBehaviour {
 
 	// Engine orientation (typically either Vector3.forward or Vector3.right). 
 	// This determines how the car body moves as the engine revs up.	
-	public Vector3 engineOrientation = Vector3.forward;
+	public Vector3 engineOrientation = Vector3.right;
 	
 	// Coefficient determining how muchg torque is transfered between the wheels when they move at 
 	// different speeds, to simulate differential locking.
@@ -52,7 +52,12 @@ public class Drivetrain : MonoBehaviour {
 	public float throttle = 0;
 	// engine throttle without traction control (used for automatic gear shifting)
 	public float throttleInput = 0;
-	
+
+    //clutch
+    public float clutch;
+    private float clutchTorque;
+    
+
 	// shift gears automatically?
 	public bool automatic = true;
 
@@ -61,7 +66,10 @@ public class Drivetrain : MonoBehaviour {
 	public float rpm;
 	public float slipRatio = 0.0f;
 	float engineAngularVelo;
-	
+
+    public Turbocharger turbo;
+    public bool enableTurbo = false;
+
 	
 	float Sqr (float x) { return x*x; }
 	
@@ -87,8 +95,15 @@ public class Drivetrain : MonoBehaviour {
 			result=0;
 		return result;
 	}
-	
-	void FixedUpdate () 
+    private void Awake()
+    {
+        if(enableTurbo)
+        {
+            //turbo.
+        }
+    }
+
+    void FixedUpdate () 
 	{
 		float ratio = gearRatios[gear] * finalDriveRatio;
 		float inertia = engineInertia * Sqr(ratio);
@@ -160,6 +175,111 @@ public class Drivetrain : MonoBehaviour {
 			gear --;
 	}
 	
+    [System.Serializable]
+    public class Turbocharger
+    {
+        public float angularVelocity = 0f;
+        public float prevAngularVelocity = 0f;
+        public float brakingCoeff = 0.92f;
+
+        public float rpm = 0f;
+        private float maxRpm = 8000f;
+        private float rpmNormalized = 0f;
+
+        public float boost = 2f;
+        public float pressure = 0f;
+        [HideInInspector]
+        public float prev_pressure = 0f;
+
+        private AudioSource WhistleSource;
+        public AudioClip WhistleSound;
+
+        private AudioSource blowOffSource;
+        public AudioClip blowOffSound;
+
+        [HideInInspector]
+        public float prev_throttle;
+        public bool isSteeringWheelNo2 = false;
+
+        public void SetWhistleAudio(AudioSource s)
+        {
+            if(!WhistleSound)
+                Debug.LogError("no turbo whistle sound!");
+
+            s.playOnAwake = true;
+            s.loop = true;
+            s.priority = 0;
+            s.clip = WhistleSound;
+            s.spatialBlend = 1f;
+            s.dopplerLevel = 0f;
+            s.Play();
+
+            WhistleSource = s;
+        }
+
+        public void SetBlowOffAudio(AudioSource s)
+        {
+            if (!blowOffSound)
+                Debug.LogError("no turbo blow off sound!");
+
+            s.playOnAwake = false;
+            s.loop = false;
+            s.priority = 0;
+            s.clip = blowOffSound;
+            s.spatialBlend = 1f;
+            s.dopplerLevel = 0f;
+            
+            blowOffSource = s;
+        }
+
+        public float CalculateTorque(float engineRpmNormalized, float throttle)
+        {
+            float inertia = 0.0f;
+
+            float angularAcceleration = throttle * engineRpmNormalized * 300f / inertia;
+            angularVelocity += angularAcceleration * Time.deltaTime;
+            angularVelocity += -brakingCoeff * rpmNormalized * 60f;
+
+            rpm = angularVelocity * 60f;//rpm
+
+            rpmNormalized = rpm / maxRpm;
+
+            prev_pressure = pressure;
+            pressure = rpmNormalized * boost * throttle + (isSteeringWheelNo2 ? 3.5f : 0f);
+
+            CalculateBlowOff(throttle, prev_pressure);
+
+            WhistleSource.pitch = engineRpmNormalized;
+            WhistleSource.volume = rpmNormalized * 0.2f;
+
+            return pressure * boost * 0.1f;
+        }
+
+        public void CalculateBlowOff(float throttle, float pressure)
+        {
+            prevAngularVelocity = angularVelocity;
+
+            if (pressure > (isSteeringWheelNo2 ? 10.5f : 11.5f) && throttle <=
+                (isSteeringWheelNo2 ? 0.6f : 0))
+            {
+                if(!blowOffSource.isPlaying)
+                {
+                    blowOffSource.volume = rpmNormalized * 0.13f - (isSteeringWheelNo2 ? 0.375f : 0.075f);
+                    blowOffSource.pitch = pressure / (boost * 8f) + 0.176f;
+                    blowOffSource.Play();
+
+                    angularVelocity = 0f;
+                }
+                else
+                {
+                    blowOffSource.volume = rpmNormalized * 0.13f - (isSteeringWheelNo2 ? 0.375f : 0.075f);
+                    blowOffSource.pitch = pressure / (boost * 0.8f) + 0.176f;
+                    blowOffSource.Stop();
+                    blowOffSource.Play();
+                }
+            }
+        }
+    }
 	// Debug GUI. Disable when not needed.
 	void OnGUI () {
 		GUILayout.Label("RPM: "+rpm);
