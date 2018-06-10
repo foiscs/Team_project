@@ -13,8 +13,11 @@ public class Skidmarks : MonoBehaviour {
 	public int maxMarks = 1024;			// Maximum number of marks total handled by one instance of the script.
 	public float markWidth = 0.275f;		// The width of the skidmarks. Should match the width of the wheel that it is used for. In meters.
 	public float groundOffset = 0.02f;	// The distance the skidmarks is places above the surface it is placed upon. In meters.
-	public float minDistance = 0.1f;		// The minimum distance between two marks places next to each other. 
-	
+	public float minDistance = 0.1f;        // The minimum distance between two marks places next to each other. 
+
+    [SerializeField]
+    Material skidmarksMaterial;
+
 	int indexShift;
 	int numMarks = 0;
 	
@@ -32,15 +35,26 @@ public class Skidmarks : MonoBehaviour {
 	private MarkSection[] skidmarks;
 	
 	private bool updated = false;
-	
-	// Initiallizes the array holding the skidmark sections.
-	void Awake()
+    MeshRenderer mr;
+    MeshFilter mf;
+    Mesh marksMesh;
+    // Initiallizes the array holding the skidmark sections.
+    void Awake()
 	{
 		skidmarks = new MarkSection[maxMarks];
 		for (int i = 0; i < maxMarks; i++)
 			skidmarks[i] = new MarkSection();
-		if (((MeshFilter) GetComponent (typeof(MeshFilter))).mesh == null)
-			((MeshFilter) GetComponent (typeof(MeshFilter))).mesh = new Mesh();
+        mf = GetComponent<MeshFilter>();
+        mr = GetComponent<MeshRenderer>();
+
+        if (mr = null)
+            mr = GetComponent<MeshRenderer>();
+
+        marksMesh = new Mesh();
+        marksMesh.MarkDynamic();
+
+        if (mf == null)
+            mf = GetComponent<MeshFilter>();
 	}
 	
 	// Function called by the wheels that is skidding. Gathers all the information needed to
