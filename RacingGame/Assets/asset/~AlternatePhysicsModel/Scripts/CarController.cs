@@ -1,8 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+
 // This class is repsonsible for controlling inputs to the car.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 // Change this code to implement other input types, such as support for analogue input, or AI cars.
 [RequireComponent (typeof (Drivetrain))]
 public class CarController : MonoBehaviour {
@@ -77,7 +80,10 @@ public class CarController : MonoBehaviour {
 
 	// Used by SoundController to get average slip velo of all wheels for skid sounds.
 	public float slipVelo {
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 		get {
 			float val = 0.0f;
 			foreach(Wheel w in wheels)
@@ -93,6 +99,7 @@ public class CarController : MonoBehaviour {
 			GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
 		GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
 		drivetrain = GetComponent (typeof (Drivetrain)) as Drivetrain;
+<<<<<<< HEAD
     }
 	
 	void Update () 
@@ -179,54 +186,65 @@ public class CarController : MonoBehaviour
     {
         get
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
+=======
+	}
+	
+	void Update () 
+	{
+        if(Input.GetKeyDown(KeyCode.Joystick1Button7))
+>>>>>>> parent of 4089a87... 버그 수정
         {
-            float val = 0.0f;
-            foreach (Wheel w in wheels)
-                val += w.slipVelo / wheels.Length;
-            return val;
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
-    }
-    // Initialize
-    void Start()
-    {
-        if (centerOfMass != null)
-            GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
-        GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
-        drivetrain = GetComponent(typeof(Drivetrain)) as Drivetrain;
-    }
-    void Update()
-    {
-        // Steering
-        Vector3 carDir = transform.forward;
-        float fVelo = GetComponent<Rigidbody>().velocity.magnitude;
-        Vector3 veloDir = GetComponent<Rigidbody>().velocity * (1 / fVelo);
-        float angle = -Mathf.Asin(Mathf.Clamp(Vector3.Cross(veloDir, carDir).y, -1, 1));
-        float optimalSteering = angle / (wheels[0].maxSteeringAngle * Mathf.Deg2Rad);
-        if (fVelo < 1)
-            optimalSteering = 0;
-        float steerInput = 0;
-        if (Input.GetKey(KeyCode.LeftArrow))
-            steerInput = -1;
-        if (Input.GetKey(KeyCode.RightArrow))
-            steerInput = 1;
-        if (steerInput < steering)
+		// Steering
+		Vector3 carDir = transform.forward;
+		float fVelo = GetComponent<Rigidbody>().velocity.magnitude;
+		Vector3 veloDir = GetComponent<Rigidbody>().velocity * (1/fVelo);
+		float angle = -Mathf.Asin(Mathf.Clamp( Vector3.Cross(veloDir, carDir).y, -1, 1));
+		float optimalSteering = angle / (wheels[0].maxSteeringAngle * Mathf.Deg2Rad);
+		if (fVelo < 1)
+			optimalSteering = 0;
+				
+		float steerInput = 0;
+        if (!joystickController)
         {
-            float steerSpeed = (steering > 0) ? (1 / (steerReleaseTime + veloSteerReleaseTime * fVelo)) : (1 / (steerTime + veloSteerTime * fVelo));
-            if (steering > optimalSteering)
-                steerSpeed *= 1 + (steering - optimalSteering) * steerCorrectionFactor;
-            steering -= steerSpeed * Time.deltaTime;
-            if (steerInput > steering)
-                steering = steerInput;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                steerInput = -1;
+            if (Input.GetKey(KeyCode.RightArrow))
+                steerInput = 1;
         }
-        else if (steerInput > steering)
+        else
+            steerInput = Input.GetAxis("Horizontal");
+
+		if (steerInput < steering)
+		{
+			float steerSpeed = (steering>0)?(1/(steerReleaseTime+veloSteerReleaseTime*fVelo)) :(1/(steerTime+veloSteerTime*fVelo));
+			if (steering > optimalSteering)
+				steerSpeed *= 1 + (steering-optimalSteering) * steerCorrectionFactor;
+			steering -= steerSpeed * Time.deltaTime;
+			if (steerInput > steering)
+				steering = steerInput;
+		}
+		else if (steerInput > steering)
+		{
+			float steerSpeed = (steering<0)?(1/(steerReleaseTime+veloSteerReleaseTime*fVelo)) :(1/(steerTime+veloSteerTime*fVelo));
+			if (steering < optimalSteering)
+				steerSpeed *= 1 + (optimalSteering-steering) * steerCorrectionFactor;
+			steering += steerSpeed * Time.deltaTime;
+			if (steerInput < steering)
+				steering = steerInput;
+		}
+
+        // Throttle/Brake
+        if (!joystickController)
         {
-            float steerSpeed = (steering < 0) ? (1 / (steerReleaseTime + veloSteerReleaseTime * fVelo)) : (1 / (steerTime + veloSteerTime * fVelo));
-            if (steering < optimalSteering)
-                steerSpeed *= 1 + (optimalSteering - steering) * steerCorrectionFactor;
-            steering += steerSpeed * Time.deltaTime;
-            if (steerInput < steering)
-                steering = steerInput;
+            kController();
         }
+        else
+        {
+            jController();
+        }
+<<<<<<< HEAD
 <<<<<<< HEAD
         
 		// Handbrake
@@ -238,11 +256,28 @@ public class CarController : MonoBehaviour
 		drivetrain.throttleInput = throttleInput;
 		
 		if(Input.GetKeyDown(KeyCode.A))
+=======
+        
+		// Handbrake
+		handbrake = Mathf.Clamp01 ( handbrake + (Input.GetKey (KeyCode.Space)? Time.deltaTime: -Time.deltaTime) );
+        handbrake = Mathf.Clamp01(handbrake + (Input.GetKey(KeyCode.Joystick1Button8) ? Time.deltaTime : -Time.deltaTime));
+
+        // Gear shifting
+        float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime)/shiftSpeed);
+		drivetrain.throttle = throttle * shiftThrottleFactor;
+		drivetrain.throttleInput = throttleInput;
+        
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+>>>>>>> parent of 4089a87... 버그 수정
 		{
 			lastShiftTime = Time.time;
 			drivetrain.ShiftUp ();
 		}
+<<<<<<< HEAD
 		if(Input.GetKeyDown(KeyCode.Z))
+=======
+		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+>>>>>>> parent of 4089a87... 버그 수정
 		{
 			lastShiftTime = Time.time;
 			drivetrain.ShiftDown ();
@@ -256,8 +291,11 @@ public class CarController : MonoBehaviour
 			w.steering = steering;
 		}
         DrawLine(veloDir);
+<<<<<<< HEAD
 
        // throttle += 1;
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 	}
 
     void kController()
@@ -269,15 +307,19 @@ public class CarController : MonoBehaviour
         brakeKey = Input.GetKey(KeyCode.DownArrow);
 
 
+<<<<<<< HEAD
 =======
         bool accelKey = Input.GetKey(KeyCode.UpArrow);
         bool brakeKey = Input.GetKey(KeyCode.DownArrow);
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
+=======
+>>>>>>> parent of 4089a87... 버그 수정
         if (drivetrain.automatic && drivetrain.gear == 0)
         {
             accelKey = Input.GetKey(KeyCode.DownArrow);
             brakeKey = Input.GetKey(KeyCode.UpArrow);
         }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             throttle += Time.deltaTime / throttleTime;
@@ -291,9 +333,11 @@ public class CarController : MonoBehaviour
                 throttle += Time.deltaTime / throttleTimeTraction;
             else
                 throttle -= Time.deltaTime / throttleReleaseTime;
+
             if (throttleInput < 0)
                 throttleInput = 0;
             throttleInput += Time.deltaTime / throttleTime;
+            brake = 0;
         }
         else
         {
@@ -303,6 +347,7 @@ public class CarController : MonoBehaviour
                 throttle -= Time.deltaTime / throttleReleaseTimeTraction;
         }
         throttle = Mathf.Clamp01(throttle);
+
         if (brakeKey)
         {
             if (drivetrain.slipRatio < 0.2f)
@@ -321,82 +366,70 @@ public class CarController : MonoBehaviour
         }
         brake = Mathf.Clamp01(brake);
         throttleInput = Mathf.Clamp(throttleInput, -1, 1);
-        // Handbrake
-        handbrake = (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton2)) ? 1f : 0f;
-        // Gear shifting
-        float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime) / shiftSpeed);
-        if (drivetrain.gear == 0 && Input.GetKey(KeyCode.UpArrow))
+    }
+    void jController()
+    {
+        float accelPower = Input.GetAxis("Vertical");
+            
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            throttle = 0.4f;// Anti reverse lock thingy??
+            throttle += Time.deltaTime / throttleTime;
+            throttleInput += Time.deltaTime / throttleTime;
+        }
+        else if (accelPower > 0)
+        {
+            if (drivetrain.slipRatio < 0.10f)
+                throttle += Time.deltaTime / throttleTime * accelPower;
+            else if (!tractionControl)
+                throttle += Time.deltaTime / throttleTimeTraction * accelPower;
+            else
+                throttle -= Time.deltaTime / throttleReleaseTime * accelPower;
+
+            if (throttleInput < 0)
+                throttleInput = 0;
+
+            throttleInput += Time.deltaTime / throttleTime * accelPower;
+        }
+        else if(accelPower == 0)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                throttle -= Time.deltaTime / throttleReleaseTime;
+            else
+                throttle -= Time.deltaTime / throttleReleaseTimeTraction;
+        }
+        throttle = Mathf.Clamp01(throttle);
+        
+        if(accelPower<0f)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake += Time.deltaTime / throttleTime + (accelPower * 10);
+            else
+                brake += Time.deltaTime / throttleTimeTraction + (accelPower * 10);
+            throttle = 0;
+            throttleInput -= Time.deltaTime / throttleTime + (accelPower * 10);
+        }
+        else
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake -= Time.deltaTime / throttleReleaseTime;
+            else
+                brake -= Time.deltaTime / throttleReleaseTimeTraction;
         }
 
-        if (drivetrain.gear == 0)
-            drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? throttle : 0f;
-        else
-            drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? (tractionControl ? throttle : 1) * shiftThrottleFactor : 0f;
-        drivetrain.throttleInput = throttleInput;
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            lastShiftTime = Time.time;
-            drivetrain.ShiftUp();
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            lastShiftTime = Time.time;
-            drivetrain.ShiftDown();
-        }
-        //play gear shift sound
-        if (gearShifted && gearShiftedFlag && drivetrain.gear != 1)
-        {
-            GetComponent<SoundController>().playShiftUp();
-            gearShifted = false;
-            gearShiftedFlag = false;
-        }
-        // ABS Trigger (This prototype version is used to prevent wheel lock , currently expiremental)
-        if (absControl)
-            brake -= brake >= 0.1f ? 0.1f : 0f;
-        // Apply inputs
-        foreach (Wheel w in wheels)
-        {
-            w.brake = Input.GetKey(KeyCode.DownArrow) ? brake : 0;
-            w.handbrake = handbrake;
-            w.steering = steering;
-        }
-        // Reset Car position and rotation in case it rolls over
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
-            transform.rotation = Quaternion.Euler(0, transform.localRotation.y, 0);
-        }
-        // Traction Control Toggle
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (tractionControl)
-            {
-                tractionControl = false;
-            }
-            else
-            {
-                tractionControl = true;
-            }
-        }
-        // Anti-Brake Lock Toggle
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            if (absControl)
-            {
-                absControl = false;
-            }
-            else
-            {
-                absControl = true;
-            }
-        }
+        brake = Mathf.Clamp01(brake);
+        throttleInput = Mathf.Clamp(throttleInput, -1, 1);
     }
-    // Debug GUI. Disable when not needed.
-    void OnGUI()
+
+    void DrawLine(Vector3 veloDir)
     {
-        GUI.Label(new Rect(0, 60, 100, 200), "km/h: " + GetComponent<Rigidbody>().velocity.magnitude * 3.6f);
-        tractionControl = GUI.Toggle(new Rect(0, 80, 300, 20), tractionControl, "Traction Control (bypassed by shift key)");
+        Debug.DrawRay(transform.position+new Vector3(0, 4,0), veloDir*2,Color.black);
     }
+	// Debug GUI. Disable when not needed.
+	void OnGUI ()
+	{
+		GUI.Label (new Rect(0,60,100,200),"km/h: "+GetComponent<Rigidbody>().velocity.magnitude * 3.6f);
+		tractionControl = GUI.Toggle(new Rect(0,80,300,20), tractionControl, "Traction Control (bypassed by shift key)");
+
+
+	}
 }
