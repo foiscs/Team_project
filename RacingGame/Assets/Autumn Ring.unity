@@ -5281,6 +5281,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1566213700}
   m_Mesh: {fileID: 4300030, guid: e6fec471c20b9d148b1f87910e67bea4, type: 3}
+--- !u!1 &1608094548 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1069533229907794, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110397290}
+--- !u!114 &1608094549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1608094548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84294d6a5cada41f6b34de2f039453f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine: {fileID: 8300000, guid: a4aad78ecf6d68746815ffc6eab81f12, type: 3}
+  skid: {fileID: 8300000, guid: 0788ca8ea2a75054e9e7f3c9f839c176, type: 3}
+  shiftUp: {fileID: 8300000, guid: f13e2388dc7e52c4191a46b5a27e86a3, type: 3}
+  shiftDown: {fileID: 0}
+  blowOffValve: {fileID: 0}
+  transmission:
+  - {fileID: 8300000, guid: f7c5fcaf8cdfb2f4aa21b3e8b7dc4db0, type: 3}
+  - {fileID: 8300000, guid: 77cac58f9c3bfe744a45e532abde1190, type: 3}
+  - {fileID: 8300000, guid: 7c1a5b896864c474ebe38995cde30b6c, type: 3}
+  - {fileID: 8300000, guid: da4dd7b50a1f13a43969da5abbee120b, type: 3}
+  backfire: []
+  backfireSource: {fileID: 0}
 --- !u!1 &1615332991
 GameObject:
   m_ObjectHideFlags: 0
