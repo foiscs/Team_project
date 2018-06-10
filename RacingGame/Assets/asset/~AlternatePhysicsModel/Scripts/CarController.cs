@@ -4,6 +4,9 @@ using System.Collections;
 // This class is repsonsible for controlling inputs to the car.
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 // Change this code to implement other input types, such as support for analogue input, or AI cars.
@@ -81,7 +84,10 @@ public class CarController : MonoBehaviour {
 	// Used by SoundController to get average slip velo of all wheels for skid sounds.
 	public float slipVelo {
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 		get {
@@ -99,6 +105,7 @@ public class CarController : MonoBehaviour {
 			GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
 		GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
 		drivetrain = GetComponent (typeof (Drivetrain)) as Drivetrain;
+<<<<<<< HEAD
 <<<<<<< HEAD
     }
 	
@@ -187,11 +194,16 @@ public class CarController : MonoBehaviour
         get
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 	}
 	
 	void Update () 
 	{
         if(Input.GetKeyDown(KeyCode.Joystick1Button7))
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -207,6 +219,7 @@ public class CarController : MonoBehaviour
 				
 		float steerInput = 0;
         if (!joystickController)
+<<<<<<< HEAD
         {
             if (Input.GetKey(KeyCode.LeftArrow))
                 steerInput = -1;
@@ -257,6 +270,45 @@ public class CarController : MonoBehaviour
 		
 		if(Input.GetKeyDown(KeyCode.A))
 =======
+=======
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+                steerInput = -1;
+            if (Input.GetKey(KeyCode.RightArrow))
+                steerInput = 1;
+        }
+        else
+            steerInput = Input.GetAxis("Horizontal");
+
+		if (steerInput < steering)
+		{
+			float steerSpeed = (steering>0)?(1/(steerReleaseTime+veloSteerReleaseTime*fVelo)) :(1/(steerTime+veloSteerTime*fVelo));
+			if (steering > optimalSteering)
+				steerSpeed *= 1 + (steering-optimalSteering) * steerCorrectionFactor;
+			steering -= steerSpeed * Time.deltaTime;
+			if (steerInput > steering)
+				steering = steerInput;
+		}
+		else if (steerInput > steering)
+		{
+			float steerSpeed = (steering<0)?(1/(steerReleaseTime+veloSteerReleaseTime*fVelo)) :(1/(steerTime+veloSteerTime*fVelo));
+			if (steering < optimalSteering)
+				steerSpeed *= 1 + (optimalSteering-steering) * steerCorrectionFactor;
+			steering += steerSpeed * Time.deltaTime;
+			if (steerInput < steering)
+				steering = steerInput;
+		}
+
+        // Throttle/Brake
+        if (!joystickController)
+        {
+            kController();
+        }
+        else
+        {
+            jController();
+        }
+>>>>>>> parent of 4089a87... 버그 수정
         
 		// Handbrake
 		handbrake = Mathf.Clamp01 ( handbrake + (Input.GetKey (KeyCode.Space)? Time.deltaTime: -Time.deltaTime) );
@@ -268,13 +320,20 @@ public class CarController : MonoBehaviour
 		drivetrain.throttleInput = throttleInput;
         
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 		{
 			lastShiftTime = Time.time;
 			drivetrain.ShiftUp ();
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if(Input.GetKeyDown(KeyCode.Z))
+=======
+		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
 >>>>>>> parent of 4089a87... 버그 수정
@@ -292,8 +351,11 @@ public class CarController : MonoBehaviour
 		}
         DrawLine(veloDir);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
        // throttle += 1;
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 	}
@@ -308,10 +370,13 @@ public class CarController : MonoBehaviour
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         bool accelKey = Input.GetKey(KeyCode.UpArrow);
         bool brakeKey = Input.GetKey(KeyCode.DownArrow);
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
         if (drivetrain.automatic && drivetrain.gear == 0)
