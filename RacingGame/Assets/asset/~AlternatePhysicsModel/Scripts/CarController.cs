@@ -5,6 +5,9 @@ using System.Collections;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
@@ -85,7 +88,10 @@ public class CarController : MonoBehaviour {
 	public float slipVelo {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
@@ -105,6 +111,7 @@ public class CarController : MonoBehaviour {
 			GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
 		GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
 		drivetrain = GetComponent (typeof (Drivetrain)) as Drivetrain;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     }
@@ -196,12 +203,17 @@ public class CarController : MonoBehaviour
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 	}
 	
 	void Update () 
 	{
         if(Input.GetKeyDown(KeyCode.Joystick1Button7))
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -220,6 +232,9 @@ public class CarController : MonoBehaviour
 		float steerInput = 0;
         if (!joystickController)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 4089a87... 버그 수정
         {
             if (Input.GetKey(KeyCode.LeftArrow))
                 steerInput = -1;
@@ -252,6 +267,7 @@ public class CarController : MonoBehaviour
         if (!joystickController)
         {
             kController();
+<<<<<<< HEAD
         }
         else
         {
@@ -309,6 +325,13 @@ public class CarController : MonoBehaviour
             jController();
         }
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+        }
+        else
+        {
+            jController();
+        }
+>>>>>>> parent of 4089a87... 버그 수정
         
 		// Handbrake
 		handbrake = Mathf.Clamp01 ( handbrake + (Input.GetKey (KeyCode.Space)? Time.deltaTime: -Time.deltaTime) );
@@ -321,6 +344,9 @@ public class CarController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button1))
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -330,7 +356,11 @@ public class CarController : MonoBehaviour
 		}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if(Input.GetKeyDown(KeyCode.Z))
+=======
+		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
 >>>>>>> parent of 4089a87... 버그 수정
@@ -352,8 +382,11 @@ public class CarController : MonoBehaviour
         DrawLine(veloDir);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
        // throttle += 1;
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
@@ -371,10 +404,13 @@ public class CarController : MonoBehaviour
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         bool accelKey = Input.GetKey(KeyCode.UpArrow);
         bool brakeKey = Input.GetKey(KeyCode.DownArrow);
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 =======

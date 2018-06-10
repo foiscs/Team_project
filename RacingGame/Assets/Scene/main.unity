@@ -116,6 +116,7 @@ NavMeshSettings:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &939627256
 =======
 <<<<<<< HEAD
@@ -134,6 +135,8 @@ GameObject:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!1 &14946513
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +150,9 @@ GameObject:
   m_Layer: 0
   m_Name: Colliders
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -155,6 +161,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &7231490
@@ -363,6 +370,8 @@ GameObject:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &14946514
 Transform:
   m_ObjectHideFlags: 0
@@ -403,12 +412,16 @@ GameObject:
   m_Layer: 0
   m_Name: Object007
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &75989833
 Transform:
@@ -469,6 +482,8 @@ MeshRenderer:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &35584787
 Transform:
   m_ObjectHideFlags: 0
@@ -490,6 +505,9 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 35584786}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -503,7 +521,11 @@ MeshRenderer:
   m_Materials:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 2100008, guid: 1550f4aa6c449f84692a11e24aae06d7, type: 3}
+=======
+  - {fileID: 2100008, guid: 662264ad40bb7394385afcf7cf6e8987, type: 3}
+>>>>>>> parent of 4089a87... 버그 수정
 =======
   - {fileID: 2100008, guid: 662264ad40bb7394385afcf7cf6e8987, type: 3}
 >>>>>>> parent of 4089a87... 버그 수정
@@ -531,6 +553,7 @@ MeshRenderer:
   m_SortingOrder: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!33 &316359036
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -552,6 +575,8 @@ GameObject:
   m_Layer: 0
   m_Name: Box003
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!33 &35584789
@@ -576,6 +601,9 @@ GameObject:
   m_Layer: 0
   m_Name: Object001
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -584,6 +612,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &325357610
@@ -609,6 +638,8 @@ MeshRenderer:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &58554776
 Transform:
   m_ObjectHideFlags: 0
@@ -631,6 +662,9 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 58554775}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -642,6 +676,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 2100004, guid: 1550f4aa6c449f84692a11e24aae06d7, type: 3}
@@ -963,6 +998,16 @@ GameObject:
   - component: {fileID: 574885033}
 =======
 =======
+=======
+  - {fileID: 2100000, guid: 4c28d6adba810664bb2d9d84b8682368, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+>>>>>>> parent of 4089a87... 버그 수정
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -975,6 +1020,9 @@ GameObject:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!33 &58554778
 MeshFilter:
@@ -1002,6 +1050,9 @@ GameObject:
   - component: {fileID: 292901368}
   - component: {fileID: 292901375}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1014,6 +1065,7 @@ GameObject:
   m_IsActive: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &574885024
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,6 +1073,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 574885023}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &292901367
@@ -1031,6 +1085,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1039,6 +1096,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 586501939}
@@ -1058,6 +1116,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   - {fileID: 318756006}
   - {fileID: 14946514}
   - {fileID: 380961010}
@@ -1074,6 +1134,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1083,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   front:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 717577863}
@@ -1097,6 +1161,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   - {fileID: 1336885770}
   - {fileID: 1621053762}
   compensationFactor: 1
@@ -1108,6 +1174,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1119,6 +1188,7 @@ MonoBehaviour:
   coefficients: {x: 3, y: 0.3, z: 0.4}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &574885027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1196,8 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 574885023}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!114 &292901370
@@ -1136,6 +1208,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1144,6 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedfb3c6ece334356a7e7d28869912f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   wheel1: {fileID: 717577863}
@@ -1158,6 +1234,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   wheel1: {fileID: 1336885770}
   wheel2: {fileID: 1621053762}
   coefficient: 3250
@@ -1169,6 +1247,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1177,6 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedfb3c6ece334356a7e7d28869912f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   wheel1: {fileID: 1791841147}
@@ -1204,6 +1286,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   wheel1: {fileID: 627596185}
   wheel2: {fileID: 657815098}
   coefficient: 3750
@@ -1215,6 +1299,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1223,6 +1310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d626b36c58da94a12bd1ae55d5d4e118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   joystickController: 0
@@ -1235,6 +1323,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   joystickController: 1
   wheels:
   - {fileID: 1621053762}
@@ -1243,6 +1333,9 @@ MonoBehaviour:
   - {fileID: 627596185}
   centerOfMass: {fileID: 1411270057}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1260,6 +1353,7 @@ MonoBehaviour:
   steerCorrectionFactor: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &574885031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,6 +1361,8 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 574885023}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!114 &292901373
@@ -1277,6 +1373,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1288,8 +1387,13 @@ MonoBehaviour:
   poweredWheels:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 1779138261}
   - {fileID: 1791841147}
+=======
+  - {fileID: 657815098}
+  - {fileID: 627596185}
+>>>>>>> parent of 4089a87... 버그 수정
 =======
   - {fileID: 657815098}
   - {fileID: 627596185}
@@ -1328,6 +1432,7 @@ MonoBehaviour:
   slipRatio: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!54 &574885032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1335,6 +1440,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 574885023}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!54 &292901374
@@ -1345,6 +1452,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292901366}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1357,6 +1467,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!114 &574885033
@@ -1384,6 +1495,8 @@ GameObject:
   m_Layer: 0
   m_Name: GameObject (3)
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!114 &292901375
@@ -1678,6 +1791,9 @@ GameObject:
   m_Layer: 0
   m_Name: RL
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1686,6 +1802,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &575091105
@@ -1720,6 +1837,8 @@ GameObject:
   m_Layer: 0
   m_Name: Camera Follow
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &657815097
@@ -1811,6 +1930,9 @@ GameObject:
   m_Layer: 0
   m_Name: Leftwheel
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1819,6 +1941,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &586501939
@@ -1845,6 +1968,8 @@ GameObject:
   m_Layer: 0
   m_Name: praim
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &683625969
@@ -1874,6 +1999,9 @@ GameObject:
   m_Layer: 0
   m_Name: Rightwheel
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1882,6 +2010,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &621373482
@@ -1917,6 +2046,8 @@ GameObject:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &700352005
 Transform:
   m_ObjectHideFlags: 0
@@ -1946,6 +2077,9 @@ GameObject:
   m_Layer: 0
   m_Name: Object001
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -1954,6 +2088,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &622369703
@@ -1979,6 +2114,8 @@ MeshRenderer:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1080436139
 Transform:
   m_ObjectHideFlags: 0
@@ -2001,6 +2138,9 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1080436138}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2014,7 +2154,11 @@ MeshRenderer:
   m_Materials:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 2100006, guid: 1550f4aa6c449f84692a11e24aae06d7, type: 3}
+=======
+  - {fileID: 2100000, guid: 4c28d6adba810664bb2d9d84b8682368, type: 3}
+>>>>>>> parent of 4089a87... 버그 수정
 =======
   - {fileID: 2100000, guid: 4c28d6adba810664bb2d9d84b8682368, type: 3}
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2042,6 +2186,7 @@ MeshRenderer:
   m_SortingOrder: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!33 &622369705
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2061,6 +2206,8 @@ GameObject:
   m_Layer: 0
   m_Name: GameObject (8)
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!33 &1080436141
@@ -2084,6 +2231,9 @@ GameObject:
   m_Layer: 0
   m_Name: Box003
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2092,6 +2242,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &626512332
@@ -2117,6 +2268,8 @@ GameObject:
   - component: {fileID: 717577862}
   - component: {fileID: 717577863}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1084939700
@@ -2186,6 +2339,9 @@ GameObject:
   - component: {fileID: 1336885769}
   - component: {fileID: 1336885770}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2198,6 +2354,7 @@ GameObject:
   m_IsActive: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &717577862
 Transform:
   m_ObjectHideFlags: 0
@@ -2205,6 +2362,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 717577861}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1336885769
@@ -2215,6 +2374,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1336885768}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2222,6 +2384,7 @@ Transform:
   m_LocalPosition: {x: 0.9, y: -0.094, z: 1.253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 2110035013}
@@ -2237,6 +2400,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   - {fileID: 489507985}
   m_Father: {fileID: 1436557293}
   m_RootOrder: 0
@@ -2249,6 +2414,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1336885768}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2268,7 +2436,11 @@ MonoBehaviour:
   maxSteeringAngle: 48
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   model: {fileID: 2110035012}
+=======
+  model: {fileID: 489507984}
+>>>>>>> parent of 4089a87... 버그 수정
 =======
   model: {fileID: 489507984}
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2317,6 +2489,7 @@ MonoBehaviour:
   compression: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &944073623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2501,8 @@ GameObject:
   m_Layer: 0
   m_Name: LaFerrari
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!1 &1411270056
@@ -2342,6 +2517,9 @@ GameObject:
   m_Layer: 0
   m_Name: CoG
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2350,6 +2528,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &944073624
@@ -2386,6 +2565,8 @@ GameObject:
   - component: {fileID: 1152196276}
   - component: {fileID: 1152196275}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1411270057
@@ -2447,6 +2628,9 @@ GameObject:
   - component: {fileID: 1611877099}
   - component: {fileID: 1611877098}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2457,6 +2641,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &1152196274
@@ -2482,6 +2667,8 @@ MeshRenderer:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1611877097
 Transform:
   m_ObjectHideFlags: 0
@@ -2503,6 +2690,9 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1611877096}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2516,7 +2706,11 @@ MeshRenderer:
   m_Materials:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 1550f4aa6c449f84692a11e24aae06d7, type: 3}
+=======
+  - {fileID: 2100000, guid: 662264ad40bb7394385afcf7cf6e8987, type: 3}
+>>>>>>> parent of 4089a87... 버그 수정
 =======
   - {fileID: 2100000, guid: 662264ad40bb7394385afcf7cf6e8987, type: 3}
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2544,6 +2738,7 @@ MeshRenderer:
   m_SortingOrder: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!33 &1152196276
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2562,6 +2757,8 @@ GameObject:
   - component: {fileID: 1268848903}
   - component: {fileID: 1268848904}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!33 &1611877099
@@ -2583,6 +2780,9 @@ GameObject:
   - component: {fileID: 1621053761}
   - component: {fileID: 1621053762}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2595,6 +2795,7 @@ GameObject:
   m_IsActive: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &1268848903
 Transform:
   m_ObjectHideFlags: 0
@@ -2602,6 +2803,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268848902}
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1621053761
@@ -2612,6 +2815,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1621053760}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2619,6 +2825,7 @@ Transform:
   m_LocalPosition: {x: -0.9, y: -0.094, z: 1.253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 1036862315}
@@ -2634,6 +2841,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   - {fileID: 683625969}
   m_Father: {fileID: 1436557293}
   m_RootOrder: 1
@@ -2646,6 +2855,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1621053760}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2665,7 +2877,11 @@ MonoBehaviour:
   maxSteeringAngle: 48
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   model: {fileID: 1036862314}
+=======
+  model: {fileID: 683625968}
+>>>>>>> parent of 4089a87... 버그 수정
 =======
   model: {fileID: 683625968}
 >>>>>>> parent of 4089a87... 버그 수정
@@ -2712,6 +2928,7 @@ MonoBehaviour:
   slipRatio: 0
   slipVelo: 0
   compression: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1001 &1321134426
@@ -2837,6 +3054,8 @@ Transform:
 =======
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
 >>>>>>> 587fedbc40da6d928e36bd70d9fb202232c84ac0
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
@@ -3568,6 +3787,148 @@ Transform:
   m_Father: {fileID: 700352005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!1 &1821867997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1448591505301026, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1821867998}
+  - component: {fileID: 1821868000}
+  - component: {fileID: 1821867999}
+  m_Layer: 0
+  m_Name: Object001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821867998
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4089875450184436, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1821867997}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 489507985}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1821867999
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23642365526058778, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1821867997}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 5f3ce55b36dda754d9e4907b3f50d167, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1821868000
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33485807858299666, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1821867997}
+  m_Mesh: {fileID: 4300000, guid: 5f3ce55b36dda754d9e4907b3f50d167, type: 3}
+--- !u!1 &1909433014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1241448191236890, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1909433015}
+  m_Layer: 0
+  m_Name: LaFerrari
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1909433015
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4324283338341826, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1909433014}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: 1.7763568e-15, w: -0.70710677}
+  m_LocalPosition: {x: -126.397, y: 0, z: -215.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 292901367}
+  - {fileID: 2108447241}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!1 &1924233828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1755486348026164, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1924233829}
+  - component: {fileID: 1924233831}
+  - component: {fileID: 1924233830}
+  m_Layer: 0
+  m_Name: Object001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1924233829
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4395414969378392, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924233828}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 700352005}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!23 &1924233830
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3611,6 +3972,9 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1924233828}
   m_Mesh: {fileID: 4300000, guid: 5f3ce55b36dda754d9e4907b3f50d167, type: 3}
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!1 &1942981632
 GameObject:
@@ -3680,6 +4044,7 @@ Transform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 --- !u!1 &1978481312
@@ -3695,6 +4060,8 @@ GameObject:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 --- !u!1 &1973452301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,6 +4075,9 @@ GameObject:
   m_Layer: 0
   m_Name: Box004
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -3716,6 +4086,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &1978481313
@@ -3743,6 +4114,8 @@ GameObject:
   m_Layer: 0
   m_Name: Colliders
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &1973452302
@@ -3813,6 +4186,9 @@ GameObject:
   m_Layer: 0
   m_Name: Leftwheel
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -3821,6 +4197,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &2076873404
@@ -3843,6 +4220,8 @@ BoxCollider:
 Prefab:
 >>>>>>> 4089a87ac84ba31c5c7afafafe1825c7e6b222f4
 =======
+=======
+>>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
 --- !u!4 &2061914567
@@ -3955,6 +4334,9 @@ Behaviour:
 --- !u!20 &2108447247
 Camera:
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
@@ -3965,6 +4347,7 @@ Camera:
   m_GameObject: {fileID: 2108447240}
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_Modification:
@@ -4009,6 +4392,8 @@ Camera:
 =======
 =======
 >>>>>>> parent of 4089a87... 버그 수정
+=======
+>>>>>>> parent of 4089a87... 버그 수정
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_NormalizedViewPortRect:
@@ -4038,6 +4423,9 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4089a87... 버그 수정
+=======
 >>>>>>> parent of 4089a87... 버그 수정
 =======
 >>>>>>> parent of 4089a87... 버그 수정
