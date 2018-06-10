@@ -76,6 +76,7 @@ public class CarController : MonoBehaviour {
 
 	// Used by SoundController to get average slip velo of all wheels for skid sounds.
 	public float slipVelo {
+        
 		get {
 			float val = 0.0f;
 			foreach(Wheel w in wheels)
@@ -91,7 +92,7 @@ public class CarController : MonoBehaviour {
 			GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
 		GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
 		drivetrain = GetComponent (typeof (Drivetrain)) as Drivetrain;
-	}
+    }
 	
 	void Update () 
 	{
@@ -171,6 +172,8 @@ public class CarController : MonoBehaviour {
 			w.steering = steering;
 		}
         DrawLine(veloDir);
+
+       // throttle += 1;
 	}
 
     void kController()
