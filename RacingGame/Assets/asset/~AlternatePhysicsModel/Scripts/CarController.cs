@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(Drivetrain))]
 public class CarController : MonoBehaviour
 {
+    public bool JoyStickController = false;
     // Add all wheels of the car here, so brake and steering forces can be applied to them.
     public Wheel[] wheels;
     // A transform object which marks the car's center of gravity.
@@ -101,8 +102,8 @@ public class CarController : MonoBehaviour
             steerInput = -1;
         if (Input.GetKey(KeyCode.RightArrow))
             steerInput = 1;
-        if (Input.GetAxis("Horizontal") != 0)
-            steering = Input.GetAxis("Horizontal");
+        if (Input.GetAxis("jHorizontal") != 0)
+            steering = Input.GetAxis("jHorizontal");
 
         if (steerInput < steering)
         {
@@ -122,76 +123,38 @@ public class CarController : MonoBehaviour
             if (steerInput < steering)
                 steering = steerInput;
         }
-        bool accelKey = Input.GetKey(KeyCode.UpArrow);
-        bool brakeKey = Input.GetKey(KeyCode.DownArrow);
-        if (drivetrain.automatic && drivetrain.gear == 0)
+
+        if (JoyStickController)
         {
-            accelKey = Input.GetKey(KeyCode.DownArrow);
-            brakeKey = Input.GetKey(KeyCode.UpArrow);
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            throttle += Time.deltaTime / throttleTime;
-            throttleInput += Time.deltaTime / throttleTime;
-        }
-        else if (accelKey)
-        {
-            if (drivetrain.slipRatio < 0.10f)
-                throttle += Time.deltaTime / throttleTime;
-            else if (!tractionControl)
-                throttle += Time.deltaTime / throttleTimeTraction;
-            else
-                throttle -= Time.deltaTime / throttleReleaseTime;
-            if (throttleInput < 0)
-                throttleInput = 0;
-            throttleInput += Time.deltaTime / throttleTime;
+            jControll();
         }
         else
         {
-            if (drivetrain.slipRatio < 0.2f)
-                throttle -= Time.deltaTime / throttleReleaseTime;
-            else
-                throttle -= Time.deltaTime / throttleReleaseTimeTraction;
+            kControll();
         }
-        throttle = Mathf.Clamp01(throttle);
-        if (brakeKey)
-        {
-            if (drivetrain.slipRatio < 0.2f)
-                brake += Time.deltaTime / throttleTime;
-            else
-                brake += Time.deltaTime / throttleTimeTraction;
-            throttle = 0;
-            throttleInput -= Time.deltaTime / throttleTime;
-        }
-        else
-        {
-            if (drivetrain.slipRatio < 0.2f)
-                brake -= Time.deltaTime / throttleReleaseTime;
-            else
-                brake -= Time.deltaTime / throttleReleaseTimeTraction;
-        }
-        brake = Mathf.Clamp01(brake);
-        throttleInput = Mathf.Clamp(throttleInput, -1, 1);
+        
         // Handbrake
-        handbrake = (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton2)) ? 1f : 0f;
+        handbrake = (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton8)) ? 1f : 0f;
         // Gear shifting
         float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime) / shiftSpeed);
         if (drivetrain.gear == 0 && Input.GetKey(KeyCode.UpArrow))
         {
             throttle = 0.4f;// Anti reverse lock thingy??
         }
-
+        Debug.Log(Input.GetKey(KeyCode.UpArrow) ? (tractionControl ? throttle : 1) * shiftThrottleFactor : 0f);
         if (drivetrain.gear == 0)
             drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? throttle : 0f;
-        else
+        else if (!JoyStickController)
             drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? (tractionControl ? throttle : 1) * shiftThrottleFactor : 0f;
+        else
+            drivetrain.throttle = Input.GetAxis("jVertical") > 0 ? Input.GetAxis("jVertical")* shiftThrottleFactor : 0f;
         drivetrain.throttleInput = throttleInput;
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             lastShiftTime = Time.time;
             drivetrain.ShiftUp();
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             lastShiftTime = Time.time;
             drivetrain.ShiftDown();
@@ -214,7 +177,7 @@ public class CarController : MonoBehaviour
             w.steering = steering;
         }
         // Reset Car position and rotation in case it rolls over
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
             transform.rotation = Quaternion.Euler(0, transform.localRotation.y, 0);
@@ -243,6 +206,102 @@ public class CarController : MonoBehaviour
                 absControl = true;
             }
         }
+    }
+    void kControll()
+    {
+        bool accelKey = Input.GetKey(KeyCode.UpArrow);
+        bool brakeKey = Input.GetKey(KeyCode.DownArrow);
+        if (drivetrain.automatic && drivetrain.gear == 0)
+        {
+            accelKey = Input.GetKey(KeyCode.DownArrow);
+            brakeKey = Input.GetKey(KeyCode.UpArrow);
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            throttle += Time.deltaTime / throttleTime;
+            throttleInput += Time.deltaTime / throttleTime;
+        }
+        else if (accelKey)
+        {
+            if (drivetrain.slipRatio < 0.10f)
+                throttle += Time.deltaTime / throttleTime;
+            else if (!tractionControl)
+                throttle += Time.deltaTime / throttleTimeTraction;
+            else
+                throttle -= Time.deltaTime / throttleReleaseTime;
+            if (throttleInput < 0)
+                throttleInput = 0;
+            throttleInput += Time.deltaTime / throttleTime;
+            Debug.Log(throttleInput);
+        }
+        else
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                throttle -= Time.deltaTime / throttleReleaseTime;
+            else
+                throttle -= Time.deltaTime / throttleReleaseTimeTraction;
+        }
+        throttle = Mathf.Clamp01(throttle);
+        if (brakeKey)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake += Time.deltaTime / throttleTime;
+            else
+                brake += Time.deltaTime / throttleTimeTraction;
+            throttle = 0;
+            throttleInput -= Time.deltaTime / throttleTime;
+        }
+        else
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake -= Time.deltaTime / throttleReleaseTime;
+            else
+                brake -= Time.deltaTime / throttleReleaseTimeTraction;
+        }
+        brake = Mathf.Clamp01(brake);
+        throttleInput = Mathf.Clamp(throttleInput, -1, 1);
+    }
+    void jControll()
+    {
+        float accelKey = Input.GetAxis("jVertical");
+        if (accelKey > 0f)
+        {
+            if (drivetrain.slipRatio < 0.10f)
+                throttle += (Time.deltaTime / throttleTime);
+            else if (!tractionControl)
+                throttle += Time.deltaTime / throttleTimeTraction;
+            else
+                throttle -= Time.deltaTime / throttleReleaseTime;
+            if (throttleInput == 0)
+                throttleInput = 0;
+            throttleInput += Time.deltaTime / throttleTime;
+        }
+        else if(accelKey == 0)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                throttle -= Time.deltaTime / throttleReleaseTime;
+            else
+                throttle -= Time.deltaTime / throttleReleaseTimeTraction;
+        }
+        throttle = Mathf.Clamp01(throttle);
+        if (accelKey < 0f)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake += Time.deltaTime / throttleTime * Mathf.Abs(accelKey);
+            else
+                brake += Time.deltaTime / throttleTimeTraction;
+            throttle = 0;
+            throttleInput -= Time.deltaTime / throttleTime * Mathf.Abs(accelKey);
+        }
+        else if(accelKey == 0)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake -= Time.deltaTime / throttleReleaseTime;
+            else
+                brake -= Time.deltaTime / throttleReleaseTimeTraction;
+        }
+        brake = Mathf.Clamp01(brake);
+        throttleInput = Mathf.Clamp(throttleInput, -1, 1);
     }
     // Debug GUI. Disable when not needed.
     void OnGUI()
