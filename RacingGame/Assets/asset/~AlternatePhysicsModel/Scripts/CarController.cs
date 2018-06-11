@@ -101,6 +101,9 @@ public class CarController : MonoBehaviour
             steerInput = -1;
         if (Input.GetKey(KeyCode.RightArrow))
             steerInput = 1;
+        if (Input.GetAxis("Horizontal") != 0)
+            steering = Input.GetAxis("Horizontal");
+
         if (steerInput < steering)
         {
             float steerSpeed = (steering > 0) ? (1 / (steerReleaseTime + veloSteerReleaseTime * fVelo)) : (1 / (steerTime + veloSteerTime * fVelo));
