@@ -171,6 +171,7 @@ public class Wheel : MonoBehaviour {
 
 		InitSlipMaxima ();
 		skid = FindObjectOfType(typeof(Skidmarks)) as Skidmarks;
+        Debug.Log(skid);
 		fullCompressionSpringForce = body.mass * massFraction * 2.0f * -Physics.gravity.y;
 	}
 	

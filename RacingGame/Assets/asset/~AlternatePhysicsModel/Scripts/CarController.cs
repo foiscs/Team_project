@@ -102,7 +102,7 @@ public class CarController : MonoBehaviour
             steerInput = -1;
         if (Input.GetKey(KeyCode.RightArrow))
             steerInput = 1;
-        if (!JoyStickController && Input.GetAxis("jHorizontal") != 0)
+        if (JoyStickController && Input.GetAxis("jHorizontal") != 0)
             steering = Input.GetAxis("jHorizontal");
 
         if (steerInput < steering)
@@ -141,7 +141,6 @@ public class CarController : MonoBehaviour
         {
             throttle = 0.4f;// Anti reverse lock thingy??
         }
-        Debug.Log(Input.GetKey(KeyCode.UpArrow) ? (tractionControl ? throttle : 1) * shiftThrottleFactor : 0f);
         if (drivetrain.gear == 0)
             drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? throttle : 0f;
         else if (!JoyStickController)
@@ -232,7 +231,6 @@ public class CarController : MonoBehaviour
             if (throttleInput < 0)
                 throttleInput = 0;
             throttleInput += Time.deltaTime / throttleTime;
-            Debug.Log(throttleInput);
         }
         else
         {
@@ -264,6 +262,7 @@ public class CarController : MonoBehaviour
     void jControll()
     {
         float accelKey = Input.GetAxis("jVertical");
+         
         if (accelKey > 0f)
         {
             if (drivetrain.slipRatio < 0.10f)
