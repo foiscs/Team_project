@@ -61,7 +61,8 @@ public class Wheel : MonoBehaviour {
 	Vector3 wheelVelo;
 	Vector3 localVelo;
 	Vector3 groundNormal;
-	float rotation;
+    [HideInInspector]
+	public float rotation;
 	float normalForce;
 	Vector3 suspensionForce;
 	Vector3 roadForce;
@@ -69,14 +70,15 @@ public class Wheel : MonoBehaviour {
 	Quaternion localRotation = Quaternion.identity;
 	Quaternion inverseLocalRotation = Quaternion.identity;	
 	float slipAngle;
-	int lastSkid = -1;
-	
-	// cached values
-	Rigidbody body;
+    [HideInInspector]
+    public bool onGround;
+    [HideInInspector]
+    public RaycastHit hit;
+    // cached values
+    Rigidbody body;
 	float maxSlip;
 	float maxAngle;
 	float oldAngle;	
-	Skidmarks skid;
 	
 	float CalcLongitudinalForce(float Fz,float slip)
 	{
@@ -170,8 +172,6 @@ public class Wheel : MonoBehaviour {
 			body = trs.GetComponent<Rigidbody>();
 
 		InitSlipMaxima ();
-		skid = FindObjectOfType(typeof(Skidmarks)) as Skidmarks;
-        Debug.Log(skid);
 		fullCompressionSpringForce = body.mass * massFraction * 2.0f * -Physics.gravity.y;
 	}
 	
@@ -265,9 +265,8 @@ public class Wheel : MonoBehaviour {
 
 		Vector3 pos = transform.position;
 		up = transform.up;
-		RaycastHit hit;
-		bool onGround = Physics.Raycast( pos, -up, out hit, suspensionTravel + radius);
-		
+		onGround = Physics.Raycast( pos, -up, out hit, suspensionTravel + radius);
+        Debug.Log(hit.point);
 		if (onGround && hit.collider.isTrigger)
 		{
 			onGround = false;float dist = suspensionTravel + radius;
@@ -310,11 +309,6 @@ public class Wheel : MonoBehaviour {
 			slipRatio = 0;
 			slipVelo = 0;
 		}
-		
-		if (skid != null && Mathf.Abs(slipRatio) > 0.2)
-			lastSkid = skid.AddSkidMark(hit.point, hit.normal, Mathf.Abs(slipRatio) - 0.2f,lastSkid);
-		else
-			lastSkid = -1;
 			
 		compression = Mathf.Clamp01 (compression);
 		rotation += angularVelocity * Time.deltaTime;

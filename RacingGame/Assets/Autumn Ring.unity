@@ -113,6 +113,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87777274 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1488122614560374, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110397290}
+--- !u!114 &87777277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87777274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1608094557}
+  skidmarksController: {fileID: 2126218136}
 --- !u!1 &481981159
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +336,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6405640e06fa2d49afff914d5a44d50, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1560734937 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1732651098003832, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110397290}
+--- !u!114 &1560734940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1560734937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1608094557}
+  skidmarksController: {fileID: 2126218136}
 --- !u!1 &1608094548 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1069533229907794, guid: b6405640e06fa2d49afff914d5a44d50,
@@ -346,22 +382,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4dd7b50a1f13a43969da5abbee120b, type: 3}
   backfire: []
   backfireSource: {fileID: 0}
---- !u!114 &1608094558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1608094548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a329249565404c7f8557e0ee9527654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMarks: 1024
-  markWidth: 0.275
-  groundOffset: 0.02
-  minDistance: 0.1
-  skidmarksMaterial: {fileID: 2100000, guid: 5090e4cae8b87374bb11b6d340962b5f, type: 2}
+--- !u!54 &1608094557 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 54796711709037918, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110397290}
 --- !u!1 &1856213594
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +471,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1943334658 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1275833708608634, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110397290}
+--- !u!114 &1943334661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943334658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1608094557}
+  skidmarksController: {fileID: 2126218136}
 --- !u!1 &1967494693
 GameObject:
   m_ObjectHideFlags: 0
@@ -5269,3 +5312,62 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300618, guid: db1408e16c401184a983ae38106ac943, type: 3}
+--- !u!1 &2119309787 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1267865718396598, guid: b6405640e06fa2d49afff914d5a44d50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1110397290}
+--- !u!114 &2119309790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2119309787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1608094557}
+  skidmarksController: {fileID: 2126218136}
+--- !u!1 &2126218135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2126218137}
+  - component: {fileID: 2126218136}
+  m_Layer: 0
+  m_Name: skidmarkmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2126218136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2126218135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a329249565404c7f8557e0ee9527654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skidmarksMaterial: {fileID: 2100000, guid: 5090e4cae8b87374bb11b6d340962b5f, type: 2}
+--- !u!4 &2126218137
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2126218135}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
