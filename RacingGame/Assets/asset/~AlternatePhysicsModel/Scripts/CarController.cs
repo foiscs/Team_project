@@ -102,7 +102,7 @@ public class CarController : MonoBehaviour
             steerInput = -1;
         if (Input.GetKey(KeyCode.RightArrow))
             steerInput = 1;
-        if (Input.GetAxis("jHorizontal") != 0)
+        if (!JoyStickController && Input.GetAxis("jHorizontal") != 0)
             steering = Input.GetAxis("jHorizontal");
 
         if (steerInput < steering)
