@@ -33,6 +33,7 @@ public class Line : MonoBehaviour {
                 previous = line[i - 1].position;
             }
             Gizmos.DrawLine(previous, current);
+            Gizmos.DrawWireSphere(current, 0.3f);
         }
     }
 }
