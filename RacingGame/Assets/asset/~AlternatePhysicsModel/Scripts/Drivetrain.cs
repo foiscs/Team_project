@@ -197,7 +197,7 @@ public class Drivetrain : MonoBehaviour
         if (gear < gearRatios.Length - 1)
         {
             gear++;
-            GetComponent<SoundController>().playBov();
+            GetComponent<SoundController>().playBOV();
             GetComponent<SoundController>().playShiftUp();
         }
     }

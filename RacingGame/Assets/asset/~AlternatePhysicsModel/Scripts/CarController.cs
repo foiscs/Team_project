@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(Drivetrain))]
 public class CarController : MonoBehaviour
 {
+    public bool JoyStickController = false;
     // Add all wheels of the car here, so brake and steering forces can be applied to them.
     public Wheel[] wheels;
     // A transform object which marks the car's center of gravity.
@@ -101,6 +102,9 @@ public class CarController : MonoBehaviour
             steerInput = -1;
         if (Input.GetKey(KeyCode.RightArrow))
             steerInput = 1;
+        if (JoyStickController && Input.GetAxis("jHorizontal") != 0)
+            steering = Input.GetAxis("jHorizontal");
+
         if (steerInput < steering)
         {
             float steerSpeed = (steering > 0) ? (1 / (steerReleaseTime + veloSteerReleaseTime * fVelo)) : (1 / (steerTime + veloSteerTime * fVelo));
@@ -119,6 +123,91 @@ public class CarController : MonoBehaviour
             if (steerInput < steering)
                 steering = steerInput;
         }
+
+        if (JoyStickController)
+        {
+            jControll();
+        }
+        else
+        {
+            kControll();
+        }
+        
+        // Handbrake
+        handbrake = (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton8)) ? 1f : 0f;
+        // Gear shifting
+        float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime) / shiftSpeed);
+        if (drivetrain.gear == 0 && Input.GetKey(KeyCode.UpArrow))
+        {
+            throttle = 0.4f;// Anti reverse lock thingy??
+        }
+        if (drivetrain.gear == 0)
+            drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? throttle : 0f;
+        else if (!JoyStickController)
+            drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? (tractionControl ? throttle : 1) * shiftThrottleFactor : 0f;
+        else
+            drivetrain.throttle = Input.GetAxis("jVertical") > 0 ? Input.GetAxis("jVertical")* shiftThrottleFactor : 0f;
+        drivetrain.throttleInput = throttleInput;
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            lastShiftTime = Time.time;
+            drivetrain.ShiftUp();
+        }
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            lastShiftTime = Time.time;
+            drivetrain.ShiftDown();
+        }
+        //play gear shift sound
+        if (gearShifted && gearShiftedFlag && drivetrain.gear != 1)
+        {
+            GetComponent<SoundController>().playShiftUp();
+            gearShifted = false;
+            gearShiftedFlag = false;
+        }
+        // ABS Trigger (This prototype version is used to prevent wheel lock , currently expiremental)
+        if (absControl)
+            brake -= brake >= 0.1f ? 0.1f : 0f;
+        // Apply inputs
+        foreach (Wheel w in wheels)
+        {
+            w.brake = Input.GetKey(KeyCode.DownArrow) ? brake : 0;
+            w.handbrake = handbrake;
+            w.steering = steering;
+        }
+        // Reset Car position and rotation in case it rolls over
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Joystick1Button7))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+            transform.rotation = Quaternion.Euler(0, transform.localRotation.y, 0);
+        }
+        // Traction Control Toggle
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (tractionControl)
+            {
+                tractionControl = false;
+            }
+            else
+            {
+                tractionControl = true;
+            }
+        }
+        // Anti-Brake Lock Toggle
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (absControl)
+            {
+                absControl = false;
+            }
+            else
+            {
+                absControl = true;
+            }
+        }
+    }
+    void kControll()
+    {
         bool accelKey = Input.GetKey(KeyCode.UpArrow);
         bool brakeKey = Input.GetKey(KeyCode.DownArrow);
         if (drivetrain.automatic && drivetrain.gear == 0)
@@ -169,77 +258,49 @@ public class CarController : MonoBehaviour
         }
         brake = Mathf.Clamp01(brake);
         throttleInput = Mathf.Clamp(throttleInput, -1, 1);
-        // Handbrake
-        handbrake = (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton2)) ? 1f : 0f;
-        // Gear shifting
-        float shiftThrottleFactor = Mathf.Clamp01((Time.time - lastShiftTime) / shiftSpeed);
-        if (drivetrain.gear == 0 && Input.GetKey(KeyCode.UpArrow))
+    }
+    void jControll()
+    {
+        float accelKey = Input.GetAxis("jVertical");
+         
+        if (accelKey > 0f)
         {
-            throttle = 0.4f;// Anti reverse lock thingy??
-        }
-
-        if (drivetrain.gear == 0)
-            drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? throttle : 0f;
-        else
-            drivetrain.throttle = Input.GetKey(KeyCode.UpArrow) ? (tractionControl ? throttle : 1) * shiftThrottleFactor : 0f;
-        drivetrain.throttleInput = throttleInput;
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            lastShiftTime = Time.time;
-            drivetrain.ShiftUp();
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            lastShiftTime = Time.time;
-            drivetrain.ShiftDown();
-        }
-        //play gear shift sound
-        if (gearShifted && gearShiftedFlag && drivetrain.gear != 1)
-        {
-            GetComponent<SoundController>().playShiftUp();
-            gearShifted = false;
-            gearShiftedFlag = false;
-        }
-        // ABS Trigger (This prototype version is used to prevent wheel lock , currently expiremental)
-        if (absControl)
-            brake -= brake >= 0.1f ? 0.1f : 0f;
-        // Apply inputs
-        foreach (Wheel w in wheels)
-        {
-            w.brake = Input.GetKey(KeyCode.DownArrow) ? brake : 0;
-            w.handbrake = handbrake;
-            w.steering = steering;
-        }
-        // Reset Car position and rotation in case it rolls over
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
-            transform.rotation = Quaternion.Euler(0, transform.localRotation.y, 0);
-        }
-        // Traction Control Toggle
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (tractionControl)
-            {
-                tractionControl = false;
-            }
+            if (drivetrain.slipRatio < 0.10f)
+                throttle += (Time.deltaTime / throttleTime);
+            else if (!tractionControl)
+                throttle += Time.deltaTime / throttleTimeTraction;
             else
-            {
-                tractionControl = true;
-            }
+                throttle -= Time.deltaTime / throttleReleaseTime;
+            if (throttleInput == 0)
+                throttleInput = 0;
+            throttleInput += Time.deltaTime / throttleTime;
         }
-        // Anti-Brake Lock Toggle
-        if (Input.GetKeyDown(KeyCode.B))
+        else if(accelKey == 0)
         {
-            if (absControl)
-            {
-                absControl = false;
-            }
+            if (drivetrain.slipRatio < 0.2f)
+                throttle -= Time.deltaTime / throttleReleaseTime;
             else
-            {
-                absControl = true;
-            }
+                throttle -= Time.deltaTime / throttleReleaseTimeTraction;
         }
+        throttle = Mathf.Clamp01(throttle);
+        if (accelKey < 0f)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake += Time.deltaTime / throttleTime * Mathf.Abs(accelKey);
+            else
+                brake += Time.deltaTime / throttleTimeTraction;
+            throttle = 0;
+            throttleInput -= Time.deltaTime / throttleTime * Mathf.Abs(accelKey);
+        }
+        else if(accelKey == 0)
+        {
+            if (drivetrain.slipRatio < 0.2f)
+                brake -= Time.deltaTime / throttleReleaseTime;
+            else
+                brake -= Time.deltaTime / throttleReleaseTimeTraction;
+        }
+        brake = Mathf.Clamp01(brake);
+        throttleInput = Mathf.Clamp(throttleInput, -1, 1);
     }
     // Debug GUI. Disable when not needed.
     void OnGUI()

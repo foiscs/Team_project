@@ -1,168 +1,207 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.Rendering;
 
-public class Skidmarks : MonoBehaviour {
-
-	/////////
-	// Skidmarks.cs
-	//
-	// This script controlles the skidmarks for the car. It registers the position, normal etc. of all the small sections of
-	// the skidmarks that combined makes up the entire skidmark mesh.
-	// A new mesh is auto generated whenever the skidmarks change.
-	
-	public int maxMarks = 1024;			// Maximum number of marks total handled by one instance of the script.
-	public float markWidth = 0.275f;		// The width of the skidmarks. Should match the width of the wheel that it is used for. In meters.
-	public float groundOffset = 0.02f;	// The distance the skidmarks is places above the surface it is placed upon. In meters.
-	public float minDistance = 0.1f;        // The minimum distance between two marks places next to each other. 
+// Skidmarks controller. Put one of these in a scene somewhere. Call AddSkidMark.
+// Copyright 2017 Nition, BSD licence (see LICENCE file). http://nition.co
+public class Skidmarks : MonoBehaviour
+{
+    // INSPECTOR SETTINGS
 
     [SerializeField]
-    Material skidmarksMaterial;
+    Material skidmarksMaterial; // Material for the skidmarks to use
 
-	int indexShift;
-	int numMarks = 0;
-	
-	// Variables for each mark created. Needed to generate the correct mesh.
-	class MarkSection{
-		public Vector3 pos = Vector3.zero;
-		public Vector3 normal = Vector3.zero;
-		public Vector4 tangent = Vector4.zero;
-		public Vector3 posl = Vector3.zero;
-		public Vector3 posr = Vector3.zero;
-		public float intensity = 0.0f;
-		public int lastIndex = 0;
-	};
-	
-	private MarkSection[] skidmarks;
-	
-	private bool updated = false;
+    // END INSPECTOR SETTINGS
+
+    const int MAX_MARKS = 2048; // Max number of marks total for everyone together
+    const float MARK_WIDTH = 0.35f; // Width of the skidmarks. Should match the width of the wheels
+    const float GROUND_OFFSET = 0.02f;  // Distance above surface in metres
+    const float MIN_DISTANCE = 0.25f; // Distance between skid texture sections in metres. Bigger = better performance, less smooth
+    const float MIN_SQR_DISTANCE = MIN_DISTANCE * MIN_DISTANCE;
+
+    // Info for each mark created. Needed to generate the correct mesh
+    class MarkSection
+    {
+        public Vector3 Pos = Vector3.zero;
+        public Vector3 Normal = Vector3.zero;
+        public Vector4 Tangent = Vector4.zero;
+        public Vector3 Posl = Vector3.zero;
+        public Vector3 Posr = Vector3.zero;
+        public byte Intensity;
+        public int LastIndex;
+    };
+
+    int markIndex;
+    MarkSection[] skidmarks;
+    Mesh marksMesh;
     MeshRenderer mr;
     MeshFilter mf;
-    Mesh marksMesh;
-    // Initiallizes the array holding the skidmark sections.
-    void Awake()
-	{
-		skidmarks = new MarkSection[maxMarks];
-		for (int i = 0; i < maxMarks; i++)
-			skidmarks[i] = new MarkSection();
+
+    Vector3[] vertices;
+    Vector3[] normals;
+    Vector4[] tangents;
+    Color32[] colors;
+    Vector2[] uvs;
+    int[] triangles;
+
+    bool meshUpdated;
+    bool haveSetBounds;
+
+    // #### UNITY INTERNAL METHODS ####
+
+    protected void Start()
+    {
+        // Generate a fixed array of skidmarks
+        skidmarks = new MarkSection[MAX_MARKS];
+        for (int i = 0; i < MAX_MARKS; i++)
+        {
+            skidmarks[i] = new MarkSection();
+        }
+
         mf = GetComponent<MeshFilter>();
         mr = GetComponent<MeshRenderer>();
-
-        if (mr = null)
-            mr = GetComponent<MeshRenderer>();
-
+        if (mr == null)
+        {
+            mr = gameObject.AddComponent<MeshRenderer>();
+        }
         marksMesh = new Mesh();
         marksMesh.MarkDynamic();
-
         if (mf == null)
-            mf = GetComponent<MeshFilter>();
-	}
-	
-	// Function called by the wheels that is skidding. Gathers all the information needed to
-	// create the mesh later. Sets the intensity of the skidmark section b setting the alpha
-	// of the vertex color.
-	public int AddSkidMark(Vector3 pos, Vector3  normal, float intensity, int lastIndex)
-	{
-		if(intensity > 1)
-			intensity = 1.0f;
-		if(intensity < 0)
-			return -1;
-		MarkSection curr = skidmarks[numMarks % maxMarks];
-		curr.pos = pos + normal * groundOffset;
-		curr.normal = normal;
-		curr.intensity = intensity;
-		curr.lastIndex = lastIndex;
-	
-		if(lastIndex != -1)
-		{
-			MarkSection last = skidmarks[lastIndex % maxMarks];
-			Vector3 dir  = (curr.pos - last.pos);
-			Vector3 xDir = Vector3.Cross(dir,normal).normalized;
-			
-			curr.posl = curr.pos + xDir * markWidth * 0.5f;
-			curr.posr = curr.pos - xDir * markWidth * 0.5f;
-			curr.tangent = new Vector4(xDir.x, xDir.y, xDir.z, 1);
-			
-			if(last.lastIndex == -1)
-			{
-				last.tangent = curr.tangent;
-				last.posl = curr.pos + xDir * markWidth * 0.5f;
-				last.posr = curr.pos - xDir * markWidth * 0.5f;
-			}
-		}
-		numMarks++;
-		updated = true;
-		return numMarks -1;
-	}
-	
-	// If the mesh needs to be updated, i.e. a new section has been added,
-	// the current mesh is removed, and a new mesh for the skidmarks is generated.
-	void LateUpdate()
-	{
-		if(!updated)
-		{
-			return;
-		}
-		updated = false;
-		
-		Mesh mesh = ((MeshFilter) GetComponent (typeof(MeshFilter))).mesh;
-		mesh.Clear();
-		int segmentCount = 0;
-		for(int j = 0; j < numMarks && j < maxMarks; j++)
-			if(skidmarks[j].lastIndex != -1 && skidmarks[j].lastIndex > numMarks - maxMarks)
-				segmentCount++;
-		
-		Vector3[] vertices = new Vector3[segmentCount * 4];
-		Vector3[] normals = new Vector3[segmentCount * 4];
-		Vector4[] tangents = new Vector4[segmentCount * 4];
-		Color[] colors = new Color[segmentCount * 4];
-		Vector2[] uvs = new Vector2[segmentCount * 4];
-		int[] triangles = new int[segmentCount * 6];
-		segmentCount = 0;
-		for(int i = 0; i < numMarks && i < maxMarks; i++)
-			if(skidmarks[i].lastIndex != -1 && skidmarks[i].lastIndex > numMarks - maxMarks)
-			{
-				MarkSection curr = skidmarks[i];
-				MarkSection last = skidmarks[curr.lastIndex % maxMarks];
-				vertices[segmentCount * 4 + 0] = last.posl;
-				vertices[segmentCount * 4 + 1] = last.posr;
-				vertices[segmentCount * 4 + 2] = curr.posl;
-				vertices[segmentCount * 4 + 3] = curr.posr;
-				
-				normals[segmentCount * 4 + 0] = last.normal;
-				normals[segmentCount * 4 + 1] = last.normal;
-				normals[segmentCount * 4 + 2] = curr.normal;
-				normals[segmentCount * 4 + 3] = curr.normal;
-	
-				tangents[segmentCount * 4 + 0] = last.tangent;
-				tangents[segmentCount * 4 + 1] = last.tangent;
-				tangents[segmentCount * 4 + 2] = curr.tangent;
-				tangents[segmentCount * 4 + 3] = curr.tangent;
-				
-				colors[segmentCount * 4 + 0]=new Color(0, 0, 0, last.intensity);
-				colors[segmentCount * 4 + 1]=new Color(0, 0, 0, last.intensity);
-				colors[segmentCount * 4 + 2]=new Color(0, 0, 0, curr.intensity);
-				colors[segmentCount * 4 + 3]=new Color(0, 0, 0, curr.intensity);
-	
-				uvs[segmentCount * 4 + 0] = new Vector2(0, 0);
-				uvs[segmentCount * 4 + 1] = new Vector2(1, 0);
-				uvs[segmentCount * 4 + 2] = new Vector2(0, 1);
-				uvs[segmentCount * 4 + 3] = new Vector2(1, 1);
-				
-				triangles[segmentCount * 6 + 0] = segmentCount * 4 + 0;
-				triangles[segmentCount * 6 + 2] = segmentCount * 4 + 1;
-				triangles[segmentCount * 6 + 1] = segmentCount * 4 + 2;
-				
-				triangles[segmentCount * 6 + 3] = segmentCount * 4 + 2;
-				triangles[segmentCount * 6 + 5] = segmentCount * 4 + 1;
-				triangles[segmentCount * 6 + 4] = segmentCount * 4 + 3;
-				segmentCount++;			
-			}
-		mesh.vertices=vertices;
-		mesh.normals=normals;
-		mesh.tangents=tangents;
-		mesh.triangles=triangles;
-		mesh.colors=colors;
-		mesh.uv=uvs;
-	}
+        {
+            mf = gameObject.AddComponent<MeshFilter>();
+        }
+        mf.sharedMesh = marksMesh;
 
+        vertices = new Vector3[MAX_MARKS * 4];
+        normals = new Vector3[MAX_MARKS * 4];
+        tangents = new Vector4[MAX_MARKS * 4];
+        colors = new Color32[MAX_MARKS * 4];
+        uvs = new Vector2[MAX_MARKS * 4];
+        triangles = new int[MAX_MARKS * 6];
+
+        mr.shadowCastingMode = ShadowCastingMode.Off;
+        mr.receiveShadows = false;
+        mr.material = skidmarksMaterial;
+        mr.lightProbeUsage = LightProbeUsage.Off;
+    }
+
+    protected void LateUpdate()
+    {
+        if (!meshUpdated) return;
+        meshUpdated = false;
+
+        // Reassign the mesh if it's changed this frame
+        marksMesh.vertices = vertices;
+        marksMesh.normals = normals;
+        marksMesh.tangents = tangents;
+        marksMesh.triangles = triangles;
+        marksMesh.colors32 = colors;
+        marksMesh.uv = uvs;
+
+        if (!haveSetBounds)
+        {
+            // Could use RecalculateBounds here each frame instead, but it uses about 0.1-0.2ms each time
+            // Save time by just making the mesh bounds huge, so the skidmarks will always draw
+            // Not sure why I only need to do this once, yet can't do it in Start (it resets to zero)
+            marksMesh.bounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10000, 10000, 10000));
+            haveSetBounds = true;
+        }
+
+        mf.sharedMesh = marksMesh;
+    }
+
+    // #### PUBLIC METHODS ####
+
+    // Function called by the wheel that's skidding. Sets the intensity of the skidmark section
+    // by setting the alpha of the vertex color
+    public int AddSkidMark(Vector3 pos, Vector3 normal, float intensity, int lastIndex)
+    {
+        if (intensity > 1) intensity = 1.0f;
+        else if (intensity < 0) return -1;
+
+        if (lastIndex > 0)
+        {
+            float sqrDistance = (pos - skidmarks[lastIndex].Pos).sqrMagnitude;
+            if (sqrDistance < MIN_SQR_DISTANCE) return lastIndex;
+        }
+
+        MarkSection curSection = skidmarks[markIndex];
+
+        curSection.Pos = pos + normal * GROUND_OFFSET;
+        curSection.Normal = normal;
+        curSection.Intensity = (byte)(intensity * 255f);
+        curSection.LastIndex = lastIndex;
+
+        if (lastIndex != -1)
+        {
+            MarkSection lastSection = skidmarks[lastIndex];
+            Vector3 dir = (curSection.Pos - lastSection.Pos);
+            Vector3 xDir = Vector3.Cross(dir, normal).normalized;
+
+            curSection.Posl = curSection.Pos + xDir * MARK_WIDTH * 0.5f;
+            curSection.Posr = curSection.Pos - xDir * MARK_WIDTH * 0.5f;
+            curSection.Tangent = new Vector4(xDir.x, xDir.y, xDir.z, 1);
+
+            if (lastSection.LastIndex == -1)
+            {
+                lastSection.Tangent = curSection.Tangent;
+                lastSection.Posl = curSection.Pos + xDir * MARK_WIDTH * 0.5f;
+                lastSection.Posr = curSection.Pos - xDir * MARK_WIDTH * 0.5f;
+            }
+        }
+
+        UpdateSkidmarksMesh();
+
+        int curIndex = markIndex;
+        // Update circular index
+        markIndex = ++markIndex % MAX_MARKS;
+
+        return curIndex;
+    }
+
+    // #### PROTECTED/PRIVATE METHODS ####
+
+    // Update part of the mesh for the current markIndex
+    void UpdateSkidmarksMesh()
+    {
+        MarkSection curr = skidmarks[markIndex];
+
+        // Nothing to connect to yet
+        if (curr.LastIndex == -1) return;
+
+        MarkSection last = skidmarks[curr.LastIndex];
+        vertices[markIndex * 4 + 0] = last.Posl;
+        vertices[markIndex * 4 + 1] = last.Posr;
+        vertices[markIndex * 4 + 2] = curr.Posl;
+        vertices[markIndex * 4 + 3] = curr.Posr;
+
+        normals[markIndex * 4 + 0] = last.Normal;
+        normals[markIndex * 4 + 1] = last.Normal;
+        normals[markIndex * 4 + 2] = curr.Normal;
+        normals[markIndex * 4 + 3] = curr.Normal;
+
+        tangents[markIndex * 4 + 0] = last.Tangent;
+        tangents[markIndex * 4 + 1] = last.Tangent;
+        tangents[markIndex * 4 + 2] = curr.Tangent;
+        tangents[markIndex * 4 + 3] = curr.Tangent;
+
+        colors[markIndex * 4 + 0] = new Color32(0, 0, 0, last.Intensity);
+        colors[markIndex * 4 + 1] = new Color32(0, 0, 0, last.Intensity);
+        colors[markIndex * 4 + 2] = new Color32(0, 0, 0, curr.Intensity);
+        colors[markIndex * 4 + 3] = new Color32(0, 0, 0, curr.Intensity);
+
+        uvs[markIndex * 4 + 0] = new Vector2(0, 0);
+        uvs[markIndex * 4 + 1] = new Vector2(1, 0);
+        uvs[markIndex * 4 + 2] = new Vector2(0, 1);
+        uvs[markIndex * 4 + 3] = new Vector2(1, 1);
+
+        triangles[markIndex * 6 + 0] = markIndex * 4 + 0;
+        triangles[markIndex * 6 + 2] = markIndex * 4 + 1;
+        triangles[markIndex * 6 + 1] = markIndex * 4 + 2;
+
+        triangles[markIndex * 6 + 3] = markIndex * 4 + 2;
+        triangles[markIndex * 6 + 5] = markIndex * 4 + 1;
+        triangles[markIndex * 6 + 4] = markIndex * 4 + 3;
+
+        meshUpdated = true;
+    }
 }
