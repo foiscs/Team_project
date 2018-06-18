@@ -266,7 +266,6 @@ public class Wheel : MonoBehaviour {
 		Vector3 pos = transform.position;
 		up = transform.up;
 		onGround = Physics.Raycast( pos, -up, out hit, suspensionTravel + radius);
-        Debug.Log(hit.point);
 		if (onGround && hit.collider.isTrigger)
 		{
 			onGround = false;float dist = suspensionTravel + radius;
@@ -281,8 +280,7 @@ public class Wheel : MonoBehaviour {
 				}
 			}
 		}
-
-		if (onGround)
+        if (onGround)
 		{
 			groundNormal = transform.InverseTransformDirection (inverseLocalRotation * hit.normal);
 			compression = 1.0f - ((hit.distance - radius) / suspensionTravel);
