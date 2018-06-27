@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114738401963458678}
   - component: {fileID: 114112008241496364}
   - component: {fileID: 114226856604150978}
+  - component: {fileID: 114784088463241138}
   m_Layer: 0
   m_Name: Vehicle
   m_TagString: Untagged
@@ -170,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4907873924288210}
   - component: {fileID: 114892205672101500}
+  - component: {fileID: 114703742482469368}
   m_Layer: 0
   m_Name: RL
   m_TagString: Untagged
@@ -186,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4395394111729540}
   - component: {fileID: 114881170156357506}
+  - component: {fileID: 114868790802617184}
   m_Layer: 0
   m_Name: RR
   m_TagString: Untagged
@@ -253,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4963835458224150}
   - component: {fileID: 114941933526641254}
+  - component: {fileID: 114618791239776596}
   m_Layer: 0
   m_Name: FL
   m_TagString: Untagged
@@ -288,6 +292,7 @@ GameObject:
   - component: {fileID: 124201156616038192}
   - component: {fileID: 81187135104817216}
   - component: {fileID: 114453494587154004}
+  - component: {fileID: 114974322892811148}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -304,6 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4302295021337302}
   - component: {fileID: 114306213210654642}
+  - component: {fileID: 114130181822196742}
   m_Layer: 0
   m_Name: FR
   m_TagString: Untagged
@@ -544,7 +550,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241448191236890}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 1.7763568e-15, w: -0.70710677}
-  m_LocalPosition: {x: -126.397, y: -1.97, z: -215.3}
+  m_LocalPosition: {x: -126.397, y: 7.2, z: -215.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4201889300796592}
@@ -798,12 +804,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -1185,7 +1191,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069533229907794}
   serializedVersion: 2
-  m_Mass: 1585
+  m_Mass: 940
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -1231,6 +1237,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coefficients: {x: 3, y: 0.3, z: 0.4}
+--- !u!114 &114130181822196742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732651098003832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54796711709037918}
+  skidmarksController: {fileID: 0}
 --- !u!114 &114226856604150978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1307,6 +1326,8 @@ MonoBehaviour:
   slipRatio: 0
   slipVelo: 0
   compression: 0
+  rotation: 0
+  onGround: 0
 --- !u!114 &114385422103022542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1339,6 +1360,32 @@ MonoBehaviour:
   smoothRotation: 1
   followBehind: 1
   rotationDamping: 50
+--- !u!114 &114618791239776596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1488122614560374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54796711709037918}
+  skidmarksController: {fileID: 0}
+--- !u!114 &114703742482469368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267865718396598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54796711709037918}
+  skidmarksController: {fileID: 0}
 --- !u!114 &114738401963458678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1353,6 +1400,29 @@ MonoBehaviour:
   wheel1: {fileID: 114306213210654642}
   wheel2: {fileID: 114941933526641254}
   coefficient: 3250
+--- !u!114 &114784088463241138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069533229907794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84294d6a5cada41f6b34de2f039453f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine1: {fileID: 8300000, guid: a4aad78ecf6d68746815ffc6eab81f12, type: 3}
+  skid: {fileID: 8300000, guid: 0788ca8ea2a75054e9e7f3c9f839c176, type: 3}
+  shiftUp: {fileID: 8300000, guid: f13e2388dc7e52c4191a46b5a27e86a3, type: 3}
+  shiftDown: {fileID: 0}
+  blowOffValve: {fileID: 0}
+  transmission:
+  - {fileID: 8300000, guid: f7c5fcaf8cdfb2f4aa21b3e8b7dc4db0, type: 3}
+  - {fileID: 8300000, guid: 77cac58f9c3bfe744a45e532abde1190, type: 3}
+  - {fileID: 8300000, guid: 7c1a5b896864c474ebe38995cde30b6c, type: 3}
+  - {fileID: 8300000, guid: da4dd7b50a1f13a43969da5abbee120b, type: 3}
+  backfire: []
+  backfireSource: {fileID: 0}
 --- !u!114 &114819660917447264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1364,7 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d626b36c58da94a12bd1ae55d5d4e118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystickController: 1
+  JoyStickController: 0
   wheels:
   - {fileID: 114941933526641254}
   - {fileID: 114306213210654642}
@@ -1372,12 +1442,16 @@ MonoBehaviour:
   - {fileID: 114881170156357506}
   centerOfMass: {fileID: 4812458416609378}
   inertiaFactor: 1.54
+  brake: 0
+  steering: 0
+  handbrake: 0
   shiftSpeed: 0.2
   throttleTime: 1
   throttleTimeTraction: 10
   throttleReleaseTime: 0.5
   throttleReleaseTimeTraction: 0.1
   tractionControl: 0
+  absControl: 0
   steerTime: 0.1
   veloSteerTime: 0.01
   steerReleaseTime: 0.1
@@ -1400,20 +1474,18 @@ MonoBehaviour:
   gearRatios:
   - -3.484
   - 0
-  - 3.08
-  - 2.18
-  - 1.63
-  - 1.29
-  - 1.03
-  - 0.84
-  - 0.69
+  - 3.587
+  - 2.022
+  - 1.384
+  - 1.1
+  - 0.864
   finalDriveRatio: 4.3
   minRPM: 1100
-  maxRPM: 9250
+  maxRPM: 7500
   maxTorque: 663
-  torqueRPM: 6750
+  torqueRPM: 6500
   maxPower: 304100
-  powerRPM: 9000
+  powerRPM: 7500
   engineInertia: 0.18
   engineBaseFriction: 30
   engineRPMFriction: 0.02
@@ -1421,10 +1493,40 @@ MonoBehaviour:
   differentialLockCoefficient: 100
   throttle: 0
   throttleInput: 1
+  clutch: 0
   automatic: 0
   gear: 2
   rpm: 1100
   slipRatio: 0
+  turbo:
+    angularVelocity: 0
+    prevAngularVelocity: 0
+    brakingCoeff: 0.92
+    rpm: 0
+    boost: 2
+    pressure: 0
+    prev_pressure: 0
+    WhistleSound: {fileID: 0}
+    blowOffSound: {fileID: 0}
+    prev_throttle: 0
+    isSteeringWheelNo2: 0
+  enableTurbo: 0
+  backFireEnabled: 0
+  backfireLight: {fileID: 0}
+  backfirePS: {fileID: 0}
+--- !u!114 &114868790802617184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275833708608634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f21b96cc692e048bc0878716d6108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54796711709037918}
+  skidmarksController: {fileID: 0}
 --- !u!114 &114881170156357506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1486,6 +1588,8 @@ MonoBehaviour:
   slipRatio: 0
   slipVelo: 0
   compression: 0
+  rotation: 0
+  onGround: 0
 --- !u!114 &114892205672101500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1547,6 +1651,8 @@ MonoBehaviour:
   slipRatio: 0
   slipVelo: 0
   compression: 0
+  rotation: 0
+  onGround: 0
 --- !u!114 &114941933526641254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1608,6 +1714,20 @@ MonoBehaviour:
   slipRatio: 0
   slipVelo: 0
   compression: 0
+  rotation: 0
+  onGround: 0
+--- !u!114 &114974322892811148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669818903668696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: b5388d8f6fab032488416e09e2f696cc, type: 2}
 --- !u!124 &124201156616038192
 Behaviour:
   m_ObjectHideFlags: 1
