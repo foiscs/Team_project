@@ -280,8 +280,7 @@ public class Wheel : MonoBehaviour {
 				}
 			}
 		}
-
-		if (onGround)
+        if (onGround)
 		{
 			groundNormal = transform.InverseTransformDirection (inverseLocalRotation * hit.normal);
 			compression = 1.0f - ((hit.distance - radius) / suspensionTravel);
