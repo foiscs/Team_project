@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class ArrowScp : MonoBehaviour {
     public GameObject target;
-    public GameObject CC;
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         transform.position = target.transform.position;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x,target.transform.localEulerAngles.y-90,transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x,target.transform.localEulerAngles.y,transform.eulerAngles.z);
 	}
 }

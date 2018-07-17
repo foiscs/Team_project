@@ -19,6 +19,7 @@ public class WheelSkid : MonoBehaviour
     private void Awake()
     {
         wheel = GetComponent<Wheel>();
+        skidmarksController = GameObject.Find("skidmarkmanager").GetComponent<Skidmarks>();
     }
     private void LateUpdate()
     {

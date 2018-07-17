@@ -16,10 +16,11 @@ public class Speedmeter : MonoBehaviour {
     
 
     public Rigidbody PlayerRb;
-	void Start () {
-        thisSpeed = this;
-        rpm = vehicle.GetComponent<Drivetrain>().rpm - 1000f;
 
+	public void Start () {
+        thisSpeed = this;
+                rpm = vehicle.GetComponent<Drivetrain>().rpm - 1000f;
+        PlayerRb = vehicle.GetComponent<Rigidbody>();
     }
 
     void Update()

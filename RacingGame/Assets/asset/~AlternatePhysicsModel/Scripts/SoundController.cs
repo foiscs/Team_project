@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 // Simple class to controll sounds of the car, based on engine throttle and RPM, and skid velocity.
 [RequireComponent(typeof(Drivetrain))]
-[RequireComponent(typeof(CarController))]
 public class SoundController : MonoBehaviour
 {
     public AudioClip engine1;
