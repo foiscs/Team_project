@@ -37,8 +37,7 @@ public class CarController_single : MonoBehaviour
     // There are different values for when the wheels have full traction and when there are spinning, to implement 
     // traction control schemes.
     // How long it takes to fully engage the throttle
-    public float throttleTime = 1.0f;
-    // How long it takes to fully engage the throttle 
+    public float throttleTime = 1.0f; 
     // when the wheels are spinning (and traction control is disabled)
     public float throttleTimeTraction = 10.0f;
     // How long it takes to fully release the throttle

@@ -1,18 +1,93 @@
 fileFormatVersion: 2
-guid: 4c28d6adba810664bb2d9d84b8682368
-timeCreated: 1528212036
+guid: f76b81014878bce48900f5edc439c324
+timeCreated: 1531794347
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Object001
-    400000: //RootNode
-    400002: Object001
-    2100000: Rightwheel_wheel_wire_177148027
-    2300000: Object001
-    3300000: Object001
-    4300000: Object001
+    100000: Box001
+    100002: //RootNode
+    100004: Cylinder001
+    100006: Cylinder002
+    100008: Object001
+    100010: Object002
+    100012: Object003
+    100014: Object004
+    100016: Object005
+    100018: Object006
+    100020: Object007
+    100022: Object009
+    100024: Object010
+    100026: Object014
+    100028: Object015
+    100030: Object016
+    400000: Box001
+    400002: //RootNode
+    400004: Cylinder001
+    400006: Cylinder002
+    400008: Object001
+    400010: Object002
+    400012: Object003
+    400014: Object004
+    400016: Object005
+    400018: Object006
+    400020: Object007
+    400022: Object009
+    400024: Object010
+    400026: Object014
+    400028: Object015
+    400030: Object016
+    2100000: 01___Default
+    2100002: 06___Default
+    2100004: Material__0
+    2100006: 03___Default
+    2100008: 04___Default
+    2100010: 05___Default
+    2300000: Box001
+    2300002: Cylinder001
+    2300004: Cylinder002
+    2300006: Object001
+    2300008: Object002
+    2300010: Object003
+    2300012: Object004
+    2300014: Object005
+    2300016: Object006
+    2300018: Object007
+    2300020: Object009
+    2300022: Object010
+    2300024: Object014
+    2300026: Object015
+    2300028: Object016
+    3300000: Box001
+    3300002: Cylinder001
+    3300004: Cylinder002
+    3300006: Object001
+    3300008: Object002
+    3300010: Object003
+    3300012: Object004
+    3300014: Object005
+    3300016: Object006
+    3300018: Object007
+    3300020: Object009
+    3300022: Object010
+    3300024: Object014
+    3300026: Object015
+    3300028: Object016
+    4300000: Box001
+    4300002: Cylinder001
+    4300004: Cylinder002
+    4300006: Object001
+    4300008: Object002
+    4300010: Object003
+    4300012: Object004
+    4300014: Object005
+    4300016: Object006
+    4300018: Object007
+    4300020: Object009
+    4300022: Object010
+    4300024: Object014
+    4300026: Object015
+    4300028: Object016
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -43,7 +118,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.03
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

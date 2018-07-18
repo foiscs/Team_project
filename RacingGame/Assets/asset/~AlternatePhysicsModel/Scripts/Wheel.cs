@@ -183,8 +183,9 @@ public class Wheel : MonoBehaviour {
 
 		return (springForce - damperForce + suspensionForceInput) * up;
 	}
-	
-	float SlipRatio ()
+  
+
+    float SlipRatio ()
 	{
 		const float fullSlipVelo = 4.0f;
 
