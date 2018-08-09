@@ -214,6 +214,7 @@ public class Drivetrain : MonoBehaviour
     {
         GUILayout.Label("RPM: " + rpm);
         GUILayout.Label("Gear: " + (gear - 1));
+        GUILayout.Label(Application.dataPath);
         automatic = GUILayout.Toggle(automatic, "Automatic Transmission");
     }
 }

@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+// This class is repsonsible for controlling inputs to the car.
+[RequireComponent(typeof(Drivetrain))]
 public class CarController_single : MonoBehaviour
 {
+    public GameObject cameraTarget;
     // Add all wheels of the car here, so brake and steering forces can be applied to them.
     public Wheel[] wheels;
     // A transform object which marks the car's center of gravity.
@@ -37,7 +39,8 @@ public class CarController_single : MonoBehaviour
     // There are different values for when the wheels have full traction and when there are spinning, to implement 
     // traction control schemes.
     // How long it takes to fully engage the throttle
-    public float throttleTime = 1.0f; 
+    public float throttleTime = 1.0f;
+    // How long it takes to fully engage the throttle 
     // when the wheels are spinning (and traction control is disabled)
     public float throttleTimeTraction = 10.0f;
     // How long it takes to fully release the throttle
@@ -79,6 +82,8 @@ public class CarController_single : MonoBehaviour
     // Initialize
     void Start()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetCar(this.gameObject);
+        Camera.main.GetComponent<SmoothFollow>().target = cameraTarget.transform;
         if (centerOfMass != null)
             GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
         GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
@@ -238,5 +243,11 @@ public class CarController_single : MonoBehaviour
                 absControl = true;
             }
         }
+    }
+    // Debug GUI. Disable when not needed.
+    void OnGUI()
+    {
+        GUI.Label(new Rect(0, 60, 100, 200), "km/h: " + GetComponent<Rigidbody>().velocity.magnitude * 3.6f);
+        tractionControl = GUI.Toggle(new Rect(0, 80, 300, 20), tractionControl, "Traction Control (bypassed by shift key)");
     }
 }

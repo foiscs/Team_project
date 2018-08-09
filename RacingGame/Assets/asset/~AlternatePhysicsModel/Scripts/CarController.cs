@@ -87,7 +87,9 @@ public class CarController : NetworkBehaviour
     void Start()
     {
         if (centerOfMass != null)
+        {
             GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
+        }
         GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
         drivetrain = GetComponent(typeof(Drivetrain)) as Drivetrain;
 
