@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainUIScript : MonoBehaviour {
+public class MainUIScript : Photon.PunBehaviour
+{
     public int NowNum = 1;
     public int[] BtnNum = new int[3];
     public GameObject[] Btnbar = new GameObject[4];
     public GameObject After_P;
     public GameObject[] PlayBtnbar = new GameObject[3];
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         First_btn();
-        Debug.Log(NowNum);
+
+        if(PhotonNetwork.inRoom)
+        {
+            if(PhotonNetwork.room.PlayerCount.Equals(2))
+            {
+                PhotonNetwork.LoadLevel(2);
+            }
+        }
 	}
     public void First_btn()
     {
@@ -28,7 +38,7 @@ public class MainUIScript : MonoBehaviour {
             {
                 NowNum += 4;
                 After_P.SetActive(true);
-                
+
 
             }
 
@@ -104,7 +114,7 @@ public class MainUIScript : MonoBehaviour {
             Btnbar[2].SetActive(false);
             Btnbar[3].SetActive(false);
         }
-        else if(NowNum==6)
+        else if (NowNum == 6)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
@@ -118,11 +128,14 @@ public class MainUIScript : MonoBehaviour {
             {
                 NowNum -= 1;
             }
+
             PlayBtnbar[0].SetActive(false);
             PlayBtnbar[1].SetActive(true);
             PlayBtnbar[2].SetActive(false);
+            if(Input.GetKey(KeyCode.Return))
+                PhotonNetwork.JoinRandomRoom();
         }
-        else if(NowNum==7)
+        else if (NowNum == 7)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
@@ -137,6 +150,11 @@ public class MainUIScript : MonoBehaviour {
             PlayBtnbar[2].SetActive(true);
 
         }
-            
-        }
+
     }
+    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
+    {
+        PhotonNetwork.CreateRoom(null);
+    }
+}
+
