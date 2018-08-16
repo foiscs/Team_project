@@ -28,9 +28,6 @@ public class option : MonoBehaviour {
 	void Update () {
         select_underline();
         Debug.Log(NowNum);
-        master
-
-
     }
     public void select_underline()
     {
