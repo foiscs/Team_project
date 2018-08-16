@@ -9,6 +9,8 @@ public class MainUIScript : MonoBehaviour {
     public GameObject[] Btnbar = new GameObject[4];
     public GameObject After_P;
     public GameObject[] PlayBtnbar = new GameObject[3];
+    public GameObject option_canvas;
+    public GameObject mainmenu_canvas;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +26,7 @@ public class MainUIScript : MonoBehaviour {
         if (NowNum == 1)
         {
             After_P.SetActive(false);
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Return))
             {
                 NowNum += 4;
                 After_P.SetActive(true);
@@ -47,11 +49,12 @@ public class MainUIScript : MonoBehaviour {
         }
         else if (NowNum == 2)
         {
+            
             if (Input.GetKeyUp(KeyCode.DownArrow))
             {
                 NowNum += 1;
             }
-            if (Input.GetKeyUp(KeyCode.UpArrow))
+            else if (Input.GetKeyUp(KeyCode.UpArrow))
             {
                 NowNum -= 1;
             }
@@ -62,11 +65,16 @@ public class MainUIScript : MonoBehaviour {
         }
         else if (NowNum == 3)
         {
-            if (Input.GetKeyUp(KeyCode.DownArrow))
+            if (Input.GetKeyUp(KeyCode.Return))
+            {
+                option_canvas.SetActive(true);
+                mainmenu_canvas.SetActive(false);
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
                 NowNum += 1;
             }
-            if (Input.GetKeyUp(KeyCode.UpArrow))
+            else if (Input.GetKeyUp(KeyCode.UpArrow))
             {
                 NowNum -= 1;
             }
