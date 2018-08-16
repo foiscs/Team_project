@@ -2520,7 +2520,7 @@ RectTransform:
   - {fileID: 1971294997}
   - {fileID: 1079839243}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2538,6 +2538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614398c9413dd9e46a80be587c3a9dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   MainSoundOB: {fileID: 1394323286}
   MainVolume: 0
   NowNum: 1
@@ -2545,15 +2546,29 @@ MonoBehaviour:
   NowNum_music: 9
   NowNum_engine: 9
   NowNum_fx: 9
+=======
+  NowNum: 1
+  NowNum_master: 1
+  NowNum_music: 1
+  NowNum_engine: 1
+  NowNum_fx: 1
+>>>>>>> 3c3dbee2c32c50d2e3d2c2bc28a00816b8ce4615
   master: {fileID: 0}
   music: {fileID: 0}
   engine: {fileID: 0}
   FX: {fileID: 0}
   underline:
+<<<<<<< HEAD
   - {fileID: 477951867}
   - {fileID: 1404990305}
   - {fileID: 797833992}
   - {fileID: 331917980}
+=======
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+>>>>>>> 3c3dbee2c32c50d2e3d2c2bc28a00816b8ce4615
   master_num:
   - {fileID: 488528589}
   - {fileID: 386547700}
@@ -2954,7 +2969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1079839243
 Transform:
   m_ObjectHideFlags: 0
@@ -6166,7 +6181,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 3
+=======
+  m_RootOrder: 5
+>>>>>>> 3c3dbee2c32c50d2e3d2c2bc28a00816b8ce4615
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142456208
 GameObject:

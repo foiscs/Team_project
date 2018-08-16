@@ -6,6 +6,7 @@ using System.Collections;
 public class CarController_single : MonoBehaviour
 {
     public GameObject cameraTarget;
+    public GameObject BoostObject;
     // Add all wheels of the car here, so brake and steering forces can be applied to them.
     public Wheel[] wheels;
     // A transform object which marks the car's center of gravity.
@@ -189,6 +190,7 @@ public class CarController_single : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             lastShiftTime = Time.time;
+            StartCoroutine(Fire());
             drivetrain.ShiftUp();
         }
         if (Input.GetKeyDown(KeyCode.Z))
@@ -196,6 +198,7 @@ public class CarController_single : MonoBehaviour
             lastShiftTime = Time.time;
             drivetrain.ShiftDown();
         }
+
         //play gear shift sound
         if (gearShifted && gearShiftedFlag && drivetrain.gear != 1)
         {
@@ -244,7 +247,14 @@ public class CarController_single : MonoBehaviour
             }
         }
     }
-    // Debug GUI. Disable when not needed.
+
+    public IEnumerator Fire()
+    {
+        BoostObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        BoostObject.SetActive(false);
+    }
+        // Debug GUI. Disable when not needed.
     void OnGUI()
     {
         GUI.Label(new Rect(0, 60, 100, 200), "km/h: " + GetComponent<Rigidbody>().velocity.magnitude * 3.6f);
