@@ -31,6 +31,7 @@ public class option : MonoBehaviour {
         NowNum_engine=PlayerPrefs.GetInt("engine", 0);
         NowNum_fx=PlayerPrefs.GetInt("FX", 0);
         sound = MainSoundOB.GetComponent<AudioSource>();
+        
     }
 	
 	// Update is called once per frame

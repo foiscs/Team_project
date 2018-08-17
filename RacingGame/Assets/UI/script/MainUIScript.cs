@@ -23,6 +23,7 @@ public class MainUIScript : Photon.PunBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        
         First_btn();
 
         if(PhotonNetwork.inRoom)
@@ -41,6 +42,7 @@ public class MainUIScript : Photon.PunBehaviour
             if (Input.GetKeyUp(KeyCode.Return))
             {
                 NowNum += 4;
+                option_canvas.SetActive(false);
                 After_P.SetActive(true);
 
 
