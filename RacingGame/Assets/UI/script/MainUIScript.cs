@@ -17,6 +17,7 @@ public class MainUIScript : Photon.PunBehaviour
     // Use this for initialization
     void Start()
     {
+        
     }
 	
 	// Update is called once per frame

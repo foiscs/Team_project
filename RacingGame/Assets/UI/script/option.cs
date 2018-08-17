@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class option : MonoBehaviour {
     private AudioSource sound;
     public GameObject MainSoundOB;
-    public float MainVolume;
+    public float MusicVolume;
     public int NowNum=1;
     public int NowNum_master = 9;
     public int NowNum_music = 9;
@@ -26,6 +26,10 @@ public class option : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        NowNum_master=PlayerPrefs.GetInt("master", 0);
+        NowNum_music=PlayerPrefs.GetInt("music", 0);
+        NowNum_engine=PlayerPrefs.GetInt("engine", 0);
+        NowNum_fx=PlayerPrefs.GetInt("FX", 0);
         sound = MainSoundOB.GetComponent<AudioSource>();
     }
 	
@@ -45,7 +49,6 @@ public class option : MonoBehaviour {
         music.SetActive(true);
         engine.SetActive(true);
         FX.SetActive(true);
-        Debug.Log(MainVolume);
         volume_control();
     }
     public void select_underline()
@@ -175,8 +178,15 @@ public class option : MonoBehaviour {
     }
     public void volume_control()
     {
-        MainVolume = (float)NowNum_master / 9;
-        sound.volume = MainVolume;
+        PlayerPrefs.SetInt("master", NowNum_master);
+        PlayerPrefs.SetInt("music", NowNum_music);
+        PlayerPrefs.SetInt("engine", NowNum_engine);
+        PlayerPrefs.SetInt("FX", NowNum_fx);
+        MusicVolume = (float)NowNum_music / 9;
+
+
+
+        sound.volume = MusicVolume;
     }
     
 }
