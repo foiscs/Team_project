@@ -145,12 +145,12 @@ public class MainUIScript : Photon.PunBehaviour
             {
                 NowNum -= 1;
             }
-            else if (Input.GetKeyUp(KeyCode.Return))
-            {
-                mainmenu_canvas.SetActive(false);
-                CarSelect_canvas.SetActive(true);
+            //else if (Input.GetKeyUp(KeyCode.Return))
+            //{
+            //    mainmenu_canvas.SetActive(false);
+            //    CarSelect_canvas.SetActive(true);
 
-            }
+            //}
 
             PlayBtnbar[0].SetActive(false);
             PlayBtnbar[1].SetActive(true);

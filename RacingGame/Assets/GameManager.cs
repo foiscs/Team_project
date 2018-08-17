@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Photon.PunBehaviour
 {
     public Miniplayer miniplayer;
     public ArrowScp arrow;
     public Speedmeter speedmeter;
+
+    public List<GameObject> carPrefab = new List<GameObject>();
+    public List<Transform> spawnPos = new List<Transform>();
+    public void Awake()
+    {
+        //PhotonNetwork.Instantiate(this.carPrefab[PlayerPrefs.GetInt("car")].name)
+    }
 
     public void SetCar(GameObject temp)
     {

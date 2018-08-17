@@ -1,0 +1,7 @@
+mtllib ./Road4_4_0.mtl
+g GSDWBeam2R
+
+
+
+usemtl GSDWBeamMetal
+usemap GSDWBeamMetal
