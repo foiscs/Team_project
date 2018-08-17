@@ -12,6 +12,7 @@ public class MainUIScript : Photon.PunBehaviour
     public GameObject[] PlayBtnbar = new GameObject[3];
     public GameObject option_canvas;
     public GameObject mainmenu_canvas;
+    public GameObject CarSelect_canvas;
 
     // Use this for initialization
     void Start()
@@ -110,9 +111,15 @@ public class MainUIScript : Photon.PunBehaviour
             {
                 NowNum = 1;
             }
-            if (Input.GetKeyUp(KeyCode.DownArrow))
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
                 NowNum += 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Return))
+            {
+                mainmenu_canvas.SetActive(false);
+                CarSelect_canvas.SetActive(true);
+                
             }
             PlayBtnbar[0].SetActive(true);
             PlayBtnbar[1].SetActive(false);
@@ -121,6 +128,7 @@ public class MainUIScript : Photon.PunBehaviour
             Btnbar[1].SetActive(false);
             Btnbar[2].SetActive(false);
             Btnbar[3].SetActive(false);
+
         }
         else if (NowNum == 6)
         {
@@ -135,6 +143,12 @@ public class MainUIScript : Photon.PunBehaviour
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
                 NowNum -= 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Return))
+            {
+                mainmenu_canvas.SetActive(false);
+                CarSelect_canvas.SetActive(true);
+
             }
 
             PlayBtnbar[0].SetActive(false);
@@ -152,6 +166,12 @@ public class MainUIScript : Photon.PunBehaviour
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
                 NowNum -= 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Return))
+            {
+                mainmenu_canvas.SetActive(false);
+                CarSelect_canvas.SetActive(true);
+
             }
             PlayBtnbar[0].SetActive(false);
             PlayBtnbar[1].SetActive(false);

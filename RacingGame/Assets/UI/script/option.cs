@@ -37,7 +37,6 @@ public class option : MonoBehaviour {
             option_canvas.SetActive(false);
         }
         select_underline();
-<<<<<<< HEAD
         master = master_num[NowNum_master];
         music = music_num[NowNum_music];
         engine = engine_num[NowNum_engine];
@@ -48,11 +47,6 @@ public class option : MonoBehaviour {
         FX.SetActive(true);
         Debug.Log(MainVolume);
         volume_control();
-
-
-=======
-        Debug.Log(NowNum);
->>>>>>> 3c3dbee2c32c50d2e3d2c2bc28a00816b8ce4615
     }
     public void select_underline()
     {
