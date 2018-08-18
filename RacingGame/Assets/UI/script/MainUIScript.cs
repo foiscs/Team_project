@@ -13,6 +13,7 @@ public class MainUIScript : Photon.PunBehaviour
     public GameObject option_canvas;
     public GameObject mainmenu_canvas;
     public GameObject CarSelect_canvas;
+    public GameObject upgrade_canvas;
 
     // Use this for initialization
     void Start()
@@ -63,8 +64,13 @@ public class MainUIScript : Photon.PunBehaviour
         }
         else if (NowNum == 2)
         {
+            if(Input.GetKeyUp(KeyCode.Return))
+            {
+                upgrade_canvas.SetActive(true);
+                mainmenu_canvas.SetActive(false);
+            }
             
-            if (Input.GetKeyUp(KeyCode.DownArrow))
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
                 NowNum += 1;
             }

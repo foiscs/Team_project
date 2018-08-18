@@ -21,6 +21,7 @@ public class car_select : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            carnum = 1;
             main_canvas.SetActive(true);
             select_canvas.SetActive(false);
         }
