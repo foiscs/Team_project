@@ -10,9 +10,11 @@ public class GameManager : Photon.PunBehaviour
 
     public List<GameObject> carPrefab = new List<GameObject>();
     public List<Transform> spawnPos = new List<Transform>();
+    int num = 0;
     public void Awake()
     {
-        //PhotonNetwork.Instantiate(this.carPrefab[PlayerPrefs.GetInt("car")].name)
+
+        PhotonNetwork.Instantiate(this.carPrefab[PlayerPrefs.GetInt("car")].name, spawnPos[PhotonNetwork.player.ID-1].position, spawnPos[PhotonNetwork.player.ID-1].rotation, 0);
     }
 
     public void SetCar(GameObject temp)

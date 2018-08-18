@@ -155,7 +155,8 @@ public class MainUIScript : Photon.PunBehaviour
             PlayBtnbar[0].SetActive(false);
             PlayBtnbar[1].SetActive(true);
             PlayBtnbar[2].SetActive(false);
-            if(Input.GetKey(KeyCode.Return))
+            PlayerPrefs.SetInt("car",0);
+            if (Input.GetKey(KeyCode.Return))
                 PhotonNetwork.JoinRandomRoom();
         }
         else if (NowNum == 7)

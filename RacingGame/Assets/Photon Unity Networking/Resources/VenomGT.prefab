@@ -2822,6 +2822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c5650766cfad14c93c8060a9a107b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTarget: {fileID: 0}
+  BoostObject: {fileID: 0}
   wheels:
   - {fileID: 114896700471839916}
   - {fileID: 114021917830389212}

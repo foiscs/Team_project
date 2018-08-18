@@ -8,7 +8,6 @@ public class Launcher2 : Photon.PunBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    // Use this for initialization
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("1");
