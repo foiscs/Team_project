@@ -138,7 +138,7 @@ public class Upgrade : MonoBehaviour {
             car_info.text = "" + VN_H + "\n\n" + VN_AC + "\n\n" + VN_SP;
             if (Input.GetKeyUp(KeyCode.Return))
             {
-                carnum = 8;
+                carnum = 14;
                 Lines.SetActive(true);
             }
             else if (Input.GetKeyUp(KeyCode.LeftArrow))

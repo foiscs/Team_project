@@ -68,6 +68,7 @@ public class MainUIScript : Photon.PunBehaviour
             {
                 upgrade_canvas.SetActive(true);
                 mainmenu_canvas.SetActive(false);
+                option_canvas.SetActive(false);
             }
             
             else if (Input.GetKeyUp(KeyCode.DownArrow))

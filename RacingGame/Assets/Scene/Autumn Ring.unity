@@ -3272,6 +3272,16 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 10.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198556162264921962, guid: 8e0dfedf37ce38e47a6e0647459ebef9,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 10.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198043193923891058, guid: 8e0dfedf37ce38e47a6e0647459ebef9,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 10.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e0dfedf37ce38e47a6e0647459ebef9, type: 2}
   m_IsPrefabParent: 0
