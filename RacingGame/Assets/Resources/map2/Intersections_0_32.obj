@@ -1,0 +1,21 @@
+mtllib ./Intersections_0_32.mtl
+g CenterMarkers
+v -208.9632 0.48 335.1515
+v -208.8639 0.48 348.3715
+v -196.9753 0.48 327.4657
+v -196.9136 0.48 342.0476
+
+vn 0 1 0
+vn 0 1 0
+vn 0 1 0
+vn 0 1 0
+
+vt 0 0
+vt 1 0
+vt 0 1
+vt 1 1
+
+usemtl GSDInterCenter-None-4L
+usemap GSDInterCenter-None-4L
+f 3/3/3 1/1/1 2/2/2
+f 4/4/4 3/3/3 2/2/2

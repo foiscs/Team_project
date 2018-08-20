@@ -1,0 +1,7 @@
+mtllib ./Road4_4_3.mtl
+g RoadMesh
+
+
+
+usemtl GSDWhiteYellowDouble
+usemap GSDWhiteYellowDouble

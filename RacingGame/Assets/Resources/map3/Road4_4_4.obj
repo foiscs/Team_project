@@ -1,0 +1,7 @@
+mtllib ./Road4_4_4.mtl
+g Pavement
+
+
+
+usemtl GSDRoad1
+usemap GSDRoad1

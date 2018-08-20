@@ -4,13 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scene/logo.unity
-    guid: fa9e6120bd9570341bcaa1fe04aa2086
-  - enabled: 1
-    path: Assets/Scene/MainUI.unity
-    guid: 71db06c3ec9ea1144b83271c8059adaa
-  - enabled: 1
-    path: Assets/Scene/Autumn Ring.unity
-    guid: ad3698a66dced504d9de23d26ea180d0
+  m_Scenes: []

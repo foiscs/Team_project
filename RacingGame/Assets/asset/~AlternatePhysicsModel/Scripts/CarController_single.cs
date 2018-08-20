@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 // This class is repsonsible for controlling inputs to the car.
 [RequireComponent(typeof(Drivetrain))]
-public class CarController_single : MonoBehaviour
+public class CarController_single : Photon.PunBehaviour
 {
     public GameObject cameraTarget;
     public GameObject BoostObject;
@@ -83,8 +83,11 @@ public class CarController_single : MonoBehaviour
     // Initialize
     void Start()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().SetCar(this.gameObject);
-        Camera.main.GetComponent<SmoothFollow>().target = cameraTarget.transform;
+        if (GetComponent<PhotonView>().isMine)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().SetCar(this.gameObject);
+            Camera.main.GetComponent<SmoothFollow>().target = cameraTarget.transform;
+        }
         if (centerOfMass != null)
             GetComponent<Rigidbody>().centerOfMass = centerOfMass.localPosition;
         GetComponent<Rigidbody>().inertiaTensor *= inertiaFactor;
@@ -92,6 +95,8 @@ public class CarController_single : MonoBehaviour
     }
     void Update()
     {
+        if (!GetComponent<PhotonView>().isMine)
+            return;
         // Steering
         Vector3 carDir = transform.forward;
         float fVelo = GetComponent<Rigidbody>().velocity.magnitude;
