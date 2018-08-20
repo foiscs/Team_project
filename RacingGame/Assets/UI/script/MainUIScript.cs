@@ -13,6 +13,7 @@ public class MainUIScript : Photon.PunBehaviour
     public GameObject option_canvas;
     public GameObject mainmenu_canvas;
     public GameObject CarSelect_canvas;
+    public GameObject upgrade_canvas;
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,7 @@ public class MainUIScript : Photon.PunBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        
         First_btn();
 
         if(PhotonNetwork.inRoom)
@@ -41,6 +43,7 @@ public class MainUIScript : Photon.PunBehaviour
             if (Input.GetKeyUp(KeyCode.Return))
             {
                 NowNum += 4;
+                option_canvas.SetActive(false);
                 After_P.SetActive(true);
 
 
@@ -61,8 +64,13 @@ public class MainUIScript : Photon.PunBehaviour
         }
         else if (NowNum == 2)
         {
+            if(Input.GetKeyUp(KeyCode.Return))
+            {
+                upgrade_canvas.SetActive(true);
+                mainmenu_canvas.SetActive(false);
+            }
             
-            if (Input.GetKeyUp(KeyCode.DownArrow))
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
                 NowNum += 1;
             }
