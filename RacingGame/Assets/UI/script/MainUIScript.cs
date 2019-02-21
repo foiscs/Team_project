@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainUIScript : MonoBehaviour {
+public class MainUIScript : Photon.PunBehaviour
+{
     public int NowNum = 1;
     public int[] BtnNum = new int[3];
     public GameObject[] Btnbar = new GameObject[4];
@@ -14,7 +15,6 @@ public class MainUIScript : MonoBehaviour {
     public GameObject CarSelect_canvas;
     public GameObject upgrade_canvas;
 
-<<<<<<< HEAD
     // Use this for initialization
     void Start()
     {
@@ -25,16 +25,15 @@ public class MainUIScript : MonoBehaviour {
 	void Update ()
     {
         
-=======
-	// Use this for initialization
-	void Start () {
-    }
-	
-	// Update is called once per frame
-	void Update () {
->>>>>>> parent of 3c3dbee... 서버 업뎃
         First_btn();
-        Debug.Log(NowNum);
+
+        if(PhotonNetwork.inRoom)
+        {
+            if(PhotonNetwork.room.PlayerCount.Equals(2))
+            {
+                PhotonNetwork.LoadLevel(2);
+            }
+        }
 	}
     public void First_btn()
     {
@@ -46,7 +45,7 @@ public class MainUIScript : MonoBehaviour {
                 NowNum += 4;
                 option_canvas.SetActive(false);
                 After_P.SetActive(true);
-                
+
 
             }
 
@@ -141,7 +140,7 @@ public class MainUIScript : MonoBehaviour {
             Btnbar[3].SetActive(false);
 
         }
-        else if(NowNum==6)
+        else if (NowNum == 6)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
@@ -155,7 +154,6 @@ public class MainUIScript : MonoBehaviour {
             {
                 NowNum -= 1;
             }
-<<<<<<< HEAD
             //else if (Input.GetKeyUp(KeyCode.Return))
             //{
             //    mainmenu_canvas.SetActive(false);
@@ -169,13 +167,8 @@ public class MainUIScript : MonoBehaviour {
             PlayerPrefs.SetInt("car",0);
             if (Input.GetKey(KeyCode.Return))
                 PhotonNetwork.JoinRandomRoom();
-=======
-            PlayBtnbar[0].SetActive(false);
-            PlayBtnbar[1].SetActive(true);
-            PlayBtnbar[2].SetActive(false);
->>>>>>> parent of 3c3dbee... 서버 업뎃
         }
-        else if(NowNum==7)
+        else if (NowNum == 7)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
@@ -196,6 +189,11 @@ public class MainUIScript : MonoBehaviour {
             PlayBtnbar[2].SetActive(true);
 
         }
-            
-        }
+
     }
+    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
+    {
+        PhotonNetwork.CreateRoom(null);
+    }
+}
+
